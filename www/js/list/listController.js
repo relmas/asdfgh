@@ -62,7 +62,7 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 	function tempInitializeStorage() {
 		var contacts = [
 			new Contact({  
-      "id":"8be5eec6-3345-42ed-e3a6-eda1ac1709ed",
+      "id":"0B_JDYj6vtQQiREhSbjBHTFNaVEU",
       "picId":1,
       "createdOn":"",
       "firstName":"apple IM4.2 VALLCO 051 7032 RevA",
@@ -70,8 +70,8 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
       "company":"",
       "phone":"",
       "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZUJKNmxQNDJSQlk/preview",
-      "city":"Redmond",
-      "isFavorite":true
+      "city":"",
+      "isFavorite":""
    }),
 			new Contact({  
       "id":"d74329c0-003e-44fe-e2b1-d66a76c2b875",
