@@ -64,10 +64,11 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 			new Contact({  
       "id":"8be5eec6-3345-42ed-e3a6-eda1ac1709ed",
       "createdOn":"2014-07-28T06:27:01.865Z",
-      "firstName":"apple Error Codes",
+      "firstName":"apple-Error-Codes",
+      "lastName":"Cosmos",
       "company":"Systino Mellon",
       "phone":"+1.425.829.7011",
-      "email":"el.andy.barr@gmail.com",
+      "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiREhSbjBHTFNaVEU/preview",
       "city":"Redmond",
       "isFavorite":true
    }),
