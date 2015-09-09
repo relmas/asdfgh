@@ -63,10 +63,8 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 		var contacts = [
 			new Contact({  
       "id":"8be5eec6-3345-42ed-e3a6-eda1ac1709ed",
-      "picId":1,
       "createdOn":"2014-07-28T06:27:01.865Z",
-      "firstName":"Andy",
-      "lastName":"Barr",
+      "firstName":"apple Error Codes",
       "company":"Systino Mellon",
       "phone":"+1.425.829.7011",
       "email":"el.andy.barr@gmail.com",
