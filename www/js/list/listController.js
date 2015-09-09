@@ -64,12 +64,12 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 			new Contact({  
       "id":"8be5eec6-3345-42ed-e3a6-eda1ac1709ed",
       "picId":1,
-      "createdOn":"2014-07-28T06:27:01.865Z",
-      "firstName":"Andy",
-      "lastName":"Barr",
-      "company":"Systino Mellon",
-      "phone":"+1.425.829.7011",
-      "email":"el.andy.barr@gmail.com",
+      "createdOn":"",
+      "firstName":"apple IM4.2 VALLCO 051 7032 RevA",
+      "lastName":"",
+      "company":"",
+      "phone":"",
+      "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZUJKNmxQNDJSQlk/preview",
       "city":"Redmond",
       "isFavorite":true
    }),

@@ -4,7 +4,6 @@
 			<img src="img/cats/{{model.picId}}.png">
 		</div>
 		<div class="header-text">
-			{{#if model.isFavorite}}<i class="icon icon-favorite ion-ios7-star"></i>{{/if}}
 			<h3>{{model.firstName}} {{model.lastName}}</h3>
 			<p>{{model.company}}</p>
 		</div>
@@ -24,7 +23,7 @@
 				{{/if}}
 				{{#if model.email}}
 					<li>
-						<a href="mailto:{{model.email}}" class="item-link item-content external">
+						<a href="{{model.email}}" class="item-link item-content external">
 							<div class="item-media"><i class="icon ion-ios7-email-outline"></i></div>
 							<div class="item-inner">
 								<div class="item-title">{{model.email}}</div>
