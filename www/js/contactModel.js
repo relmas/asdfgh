@@ -4,7 +4,7 @@ define(['app'],function(app) {
 		values = values || {};
 		this.id = values['id'] || app.utils.generateGUID();
 		this.createdOn = values['createdOn'] || new Date();
-		this.firstName = values['firstName'] || '1260';
+		this.firstName = values['firstName'] || '';
 		this.email = values['email'] || '';
     }
 
