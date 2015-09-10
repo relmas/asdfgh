@@ -1,3 +1,4 @@
+
 define(["app", "js/contactModel","js/list/listView"], function(app, Contact, ListView) {
 
 	/**
@@ -5,15 +6,15 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 	 * @type {*[]}
 	 */
 	var bindings = [{
-		element: '.contact add link',
+		element: '.contact-add-link',
 		event: 'click',
 		handler: openAddPopup
 	}, {
-		element: '.list panel all',
+		element: '.list-panel-all',
 		event: 'click',
 		handler: showAll
 	}, {
-		element: '.list panel favorites',
+		element: '.list-panel-favorites',
 		event: 'click',
 		handler: showFavorites
 	}
@@ -51,11 +52,11 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 		var f7Contacts = localStorage.getItem("f7Contacts");
 		var contacts = f7Contacts ? JSON.parse(f7Contacts) : tempInitializeStorage();
 		if (filter) {
-			contacts =  .filter(contacts, filter);
+			contacts = _.filter(contacts, filter);
 		}
 		contacts.sort(contactSort);
-		contacts =  .groupBy(contacts, function(contact) { return contact.firstName.charAt(0); });
-		contacts =  .toArray( .mapValues(contacts, function(value, key) { return { 'letter': key, 'list': value }; }));
+		contacts = _.groupBy(contacts, function(contact) { return contact.firstName.charAt(0); });
+		contacts = _.toArray(_.mapValues(contacts, function(value, key) { return { 'letter': key, 'list': value }; }));
 		return contacts;
 	}
 
@@ -889,7 +890,7 @@ new Contact({"id":"0B_JDYj6vtQQib3c3cUNlMl81dFU", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQib3FROTZ0X1loWkk", "createdOn":"", "firstName":"hp  HP EZ4900 KT2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib3FROTZ0X1loWkk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiaHYxQzlHNENoSlk", "createdOn":"", "firstName":"hp  HP NX9000.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaHYxQzlHNENoSlk/preview"
+new Contact({"id":"0B_JDYj6vtQQiaHYxQzlHNENoSlk", "createdOn":"", "firstName":"hp  HP  NX9000.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaHYxQzlHNENoSlk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQia0JQWHZFdnllUGs", "createdOn":"", "firstName":"asus F5R.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQia0JQWHZFdnllUGs/preview"
@@ -943,7 +944,7 @@ new Contact({"id":"0B_JDYj6vtQQiSzlHdS1nank2YkE", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiSG01U29oV0NuZm8", "createdOn":"", "firstName":"dell  6400 FM1 R1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSG01U29oV0NuZm8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiS19GTWNEWVZHNGM", "createdOn":"", "firstName":"asus EEEPC 1008ha  Power Board 2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS19GTWNEWVZHNGM/preview"
+new Contact({"id":"0B_JDYj6vtQQiS19GTWNEWVZHNGM", "createdOn":"", "firstName":"asus EEEPC 1008ha Power Board 2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS19GTWNEWVZHNGM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRkhCSTl2T21la28", "createdOn":"", "firstName":"hp  hp 530.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRkhCSTl2T21la28/preview"
@@ -1105,7 +1106,7 @@ new Contact({"id":"0B_JDYj6vtQQiOHVHbmEtWGZ0X1E", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiNmxTNUs5bEwwOWM", "createdOn":"", "firstName":"dell latitude cs.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNmxTNUs5bEwwOWM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiNkRRZF80VGpsV3c", "createdOn":"", "firstName":"asus EEEPC 1008ha  Rev 1.3G 2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNkRRZF80VGpsV3c/preview"
+new Contact({"id":"0B_JDYj6vtQQiNkRRZF80VGpsV3c", "createdOn":"", "firstName":"asus EEEPC 1008ha Rev 1.3G 2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNkRRZF80VGpsV3c/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiNHRrX3JiN1ItQnc", "createdOn":"", "firstName":"dell FM9 A1A 0226 SCOTT(RO) 01.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNHRrX3JiN1ItQnc/preview"
@@ -2257,7 +2258,7 @@ new Contact({"id":"0B_JDYj6vtQQiMmdua2U2cGRnTWc", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiLTJPWU03QS1xeEE", "createdOn":"", "firstName":"hp  PRESARIO 1100 2100 2500 SERIES SM.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLTJPWU03QS1xeEE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiejBMNnBwbjluTGM", "createdOn":"", "firstName":"dell  Inspiron 1501  QUANTA KIRIN  FX2 with NS  REV 1A  Inspiron 1501  QUANTA KIRIN  FX2 with NS  REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiejBMNnBwbjluTGM/preview"
+new Contact({"id":"0B_JDYj6vtQQiejBMNnBwbjluTGM", "createdOn":"", "firstName":"dell  Inspiron 1501   QUANTA KIRIN   FX2 with NS   REV 1A  Inspiron 1501   QUANTA KIRIN   FX2 with NS   REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiejBMNnBwbjluTGM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiWnZOM2dPZ3hvcFU", "createdOn":"", "firstName":"hp  OB7100 DP ug.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWnZOM2dPZ3hvcFU/preview"
@@ -2341,7 +2342,7 @@ new Contact({"id":"0B_JDYj6vtQQiZ1BrbkctQklwMW8", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiZ05TV25za2w4Y28", "createdOn":"", "firstName":"hp  OB3000 Acc ug.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZ05TV25za2w4Y28/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiX3RYZXBfZ2UxR3c", "createdOn":"", "firstName":"toshiba Sacramento Phoenix 10A  Build 0123.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiX3RYZXBfZ2UxR3c/preview"
+new Contact({"id":"0B_JDYj6vtQQiX3RYZXBfZ2UxR3c", "createdOn":"", "firstName":"toshiba Sacramento Phoenix 10A Build 0123.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiX3RYZXBfZ2UxR3c/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiX21OX09mWGtHaWM", "createdOn":"", "firstName":"hp  Modem Command Guidelines.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiX21OX09mWGtHaWM/preview"
@@ -2371,7 +2372,7 @@ new Contact({"id":"0B_JDYj6vtQQiSS1MeVJqaUpMWWM", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiRWxOOGpmcVZ5c1k", "createdOn":"", "firstName":"hp  OB3000 sm.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRWxOOGpmcVZ5c1k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRW1TZ1RXNlkyc1k", "createdOn":"", "firstName":"dell  Inspiron 1440  WISTRON ALBA UMA  REV 1 06ABR2009Sec  Inspiron 1440  WISTRON ALBA UMA  REV 1 06ABR2009Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRW1TZ1RXNlkyc1k/preview"
+new Contact({"id":"0B_JDYj6vtQQiRW1TZ1RXNlkyc1k", "createdOn":"", "firstName":"dell  Inspiron 1440   WISTRON ALBA UMA   REV  1 06ABR2009Sec  Inspiron 1440   WISTRON ALBA UMA   REV  1 06ABR2009Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRW1TZ1RXNlkyc1k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRVRCVGttVHNEUkU", "createdOn":"", "firstName":"hp  OB6000 mri.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRVRCVGttVHNEUkU/preview"
@@ -2380,7 +2381,7 @@ new Contact({"id":"0B_JDYj6vtQQiRVRCVGttVHNEUkU", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiRFN5WFFIZ09HZTQ", "createdOn":"", "firstName":"hp  OB4000 fg.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRFN5WFFIZ09HZTQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiR3RnZHNDUkdQWTQ", "createdOn":"", "firstName":"toshiba M200  MA10 miami MA10G CS3 20070510 Gerber.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR3RnZHNDUkdQWTQ/preview"
+new Contact({"id":"0B_JDYj6vtQQiR3RnZHNDUkdQWTQ", "createdOn":"", "firstName":"toshiba M200 MA10 miami MA10G CS3 20070510 Gerber.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR3RnZHNDUkdQWTQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiR1dMWGNpVUZmMmM", "createdOn":"", "firstName":"dell C800.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR1dMWGNpVUZmMmM/preview"
@@ -2707,7 +2708,7 @@ new Contact({"id":"0B_JDYj6vtQQiZzJJWjRlVUtTTVU", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiZFVOWV9ONUgydmc", "createdOn":"", "firstName":"hp  OB7100 mri2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZFVOWV9ONUgydmc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZ0N0SF9wamlMSkU", "createdOn":"", "firstName":"dell  Inspiron 1525  WISTRON SPEARS  AMD UMA DS2  REV 1  Inspiron 1525  WISTRON SPEARS  AMD UMA DS2  REV 1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZ0N0SF9wamlMSkU/preview"
+new Contact({"id":"0B_JDYj6vtQQiZ0N0SF9wamlMSkU", "createdOn":"", "firstName":"dell  Inspiron 1525   WISTRON SPEARS   AMD UMA DS2   REV 1  Inspiron 1525   WISTRON SPEARS   AMD UMA DS2   REV 1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZ0N0SF9wamlMSkU/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiX3dhSm5Cd1owSzA", "createdOn":"", "firstName":"dell  m1330 Thurman Discrete VGA nVidia G86  m1330 Thurman Discrete VGA nVidia G86.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiX3dhSm5Cd1owSzA/preview"
@@ -2740,7 +2741,7 @@ new Contact({"id":"0B_JDYj6vtQQiQlk0YjN5aURpRGs", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiQjJLMFB1VTJqRUE", "createdOn":"", "firstName":"toshiba satellite satellite pro S1900fru.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQjJLMFB1VTJqRUE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiMjY5cE03ZWZ1MWs", "createdOn":"", "firstName":"toshiba M200  MA10 miami 10M 20070125 WS gerber out.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMjY5cE03ZWZ1MWs/preview"
+new Contact({"id":"0B_JDYj6vtQQiMjY5cE03ZWZ1MWs", "createdOn":"", "firstName":"toshiba M200 MA10 miami 10M 20070125 WS gerber out.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMjY5cE03ZWZ1MWs/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiLTFnS0s4WVRrVGc", "createdOn":"", "firstName":"asus S6Fm Chapter 06 v1.1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLTFnS0s4WVRrVGc/preview"
@@ -2956,7 +2957,7 @@ new Contact({"id":"0B_JDYj6vtQQiTEZMc28zSWxfVVE", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiSjd0US1wT3BBa28", "createdOn":"", "firstName":"hp  Compaq Prosignia 150.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSjd0US1wT3BBa28/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRzNoTDVwcWdXX0E", "createdOn":"", "firstName":"toshiba M200  MA10 miami MA10G PreMP 20070518.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRzNoTDVwcWdXX0E/preview"
+new Contact({"id":"0B_JDYj6vtQQiRzNoTDVwcWdXX0E", "createdOn":"", "firstName":"toshiba M200 MA10 miami MA10G PreMP 20070518.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRzNoTDVwcWdXX0E/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRnkwYlM5NVN4a00", "createdOn":"", "firstName":"toshiba satellite satellite pro 2750DVD.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRnkwYlM5NVN4a00/preview"
@@ -2980,7 +2981,7 @@ new Contact({"id":"0B_JDYj6vtQQiMXIzcTdGdUIxR2M", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiekJxVkNuVGdoSHM", "createdOn":"", "firstName":"asus UX30 MB R140.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiekJxVkNuVGdoSHM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiejJ6TFlyN3QxS0E", "createdOn":"", "firstName":"toshiba M200  MA10 miami MA10 MP A04 960327.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiejJ6TFlyN3QxS0E/preview"
+new Contact({"id":"0B_JDYj6vtQQiejJ6TFlyN3QxS0E", "createdOn":"", "firstName":"toshiba M200 MA10 miami MA10 MP A04 960327.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiejJ6TFlyN3QxS0E/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQieS0yZ1E3N1lpOFE", "createdOn":"", "firstName":"toshiba portege 4000.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieS0yZ1E3N1lpOFE/preview"
@@ -3130,7 +3131,7 @@ new Contact({"id":"0B_JDYj6vtQQiUnc3M3FRYWliWTg", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiUkR0MGdSeTE1aE0", "createdOn":"", "firstName":"dell  6400 FM1 R1A  6400 FM1 R1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUkR0MGdSeTE1aE0/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiUHplbEJjSklBMUk", "createdOn":"", "firstName":"toshiba M200  MA10 miami MA10 powersequence 951220.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUHplbEJjSklBMUk/preview"
+new Contact({"id":"0B_JDYj6vtQQiUHplbEJjSklBMUk", "createdOn":"", "firstName":"toshiba M200 MA10 miami MA10 powersequence 951220.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUHplbEJjSklBMUk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiUG9BYzhPeklpTW8", "createdOn":"", "firstName":"hp  SALVIA.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUG9BYzhPeklpTW8/preview"
@@ -3274,7 +3275,7 @@ new Contact({"id":"0B_JDYj6vtQQiWjB2UHloN09FSDA", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiVllFdjFGN2ZoU3c", "createdOn":"", "firstName":"hp  1700xl.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVllFdjFGN2ZoU3c/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiVktCNzhuVy1IODA", "createdOn":"", "firstName":"toshiba toshiba m200 and m205  service manual  chapter3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVktCNzhuVy1IODA/preview"
+new Contact({"id":"0B_JDYj6vtQQiVktCNzhuVy1IODA", "createdOn":"", "firstName":"toshiba toshiba m200 and m205 service manual chapter3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVktCNzhuVy1IODA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiUjhVdW5XM3FZUkk", "createdOn":"", "firstName":"hp  Presario 2800 Mobile PC Series.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUjhVdW5XM3FZUkk/preview"
@@ -3313,7 +3314,7 @@ new Contact({"id":"0B_JDYj6vtQQiQnRBUWZLQ2RSeTg", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiQjV3Z3lwMy0xMkU", "createdOn":"", "firstName":"hp  OmniBook 4000C CT.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQjV3Z3lwMy0xMkU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQ1lIQnJucmlqV1k", "createdOn":"", "firstName":"toshiba toshiba m200 and m205  service manual  chapter1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQ1lIQnJucmlqV1k/preview"
+new Contact({"id":"0B_JDYj6vtQQiQ1lIQnJucmlqV1k", "createdOn":"", "firstName":"toshiba toshiba m200 and m205 service manual chapter1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQ1lIQnJucmlqV1k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiOHZSMEZXWDc0a1E", "createdOn":"", "firstName":"dell D510 DM3D.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOHZSMEZXWDc0a1E/preview"
@@ -3352,7 +3353,7 @@ new Contact({"id":"0B_JDYj6vtQQieTVIZlJMc3cyNUU", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQieFFXc3doS195YW8", "createdOn":"", "firstName":"dell LATITUDE LS 3538U0.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieFFXc3doS195YW8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidkhMcnN1VGJHU28", "createdOn":"", "firstName":"toshiba toshiba m200 and m205  service manual  chapter2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidkhMcnN1VGJHU28/preview"
+new Contact({"id":"0B_JDYj6vtQQidkhMcnN1VGJHU28", "createdOn":"", "firstName":"toshiba toshiba m200 and m205 service manual chapter2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidkhMcnN1VGJHU28/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQidU1kNzJWckp2SzA", "createdOn":"", "firstName":"toshiba satellite m200part2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidU1kNzJWckp2SzA/preview"
@@ -3736,7 +3737,7 @@ new Contact({"id":"0B_JDYj6vtQQiWHBjNUwwakZ4d0U", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiWFNtWjRJNzE5Vkk", "createdOn":"", "firstName":"hp  hp pavilion dv9000 dv6000 amd quanta at1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWFNtWjRJNzE5Vkk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiVUxPQWtfTkhOSUE", "createdOn":"", "firstName":"toshiba Sony Vaio PCG 61611Quanta NE7   REV 3A 22MAR2010Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVUxPQWtfTkhOSUE/preview"
+new Contact({"id":"0B_JDYj6vtQQiVUxPQWtfTkhOSUE", "createdOn":"", "firstName":"toshiba Sony Vaio PCG 61611Quanta NE7    REV 3A 22MAR2010Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVUxPQWtfTkhOSUE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVTdGZGxkeWU1M1E", "createdOn":"", "firstName":"hp  HP pavilion DV7t Intel COMPAL LA 4082P  VADER DISCRETE   REV 0.4.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVTdGZGxkeWU1M1E/preview"
@@ -3760,7 +3761,7 @@ new Contact({"id":"0B_JDYj6vtQQiUzZxaVUzRTFDSmc", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiUG1SSm5DNzdYTDA", "createdOn":"", "firstName":"toshiba Toshiba L30 QUANTA BL1.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUG1SSm5DNzdYTDA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiU1UtMVRrMXVGYm8", "createdOn":"", "firstName":"toshiba Toshiba Satellite C660D  COMPAL LA 6843P PWWAE  REV 1.0.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU1UtMVRrMXVGYm8/preview"
+new Contact({"id":"0B_JDYj6vtQQiU1UtMVRrMXVGYm8", "createdOn":"", "firstName":"toshiba Toshiba Satellite C660D COMPAL LA 6843P PWWAE REV 1.0.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU1UtMVRrMXVGYm8/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiU1A1T0VvMDNTZlU", "createdOn":"", "firstName":"toshiba Toshiba Satellite L670 L675 Compal LA 6041P NALAA Hamburg10 Rev1.0pdf (1).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU1A1T0VvMDNTZlU/preview"
@@ -3904,7 +3905,7 @@ new Contact({"id":"0B_JDYj6vtQQiUExqTDVfVUtwMTA", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiU254RVNGaFhFem8", "createdOn":"", "firstName":"toshiba Toshiba Satellite L200 M200 M203 M205 Laptop Schematic.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU254RVNGaFhFem8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiTXM1eGdLdmhHWU0", "createdOn":"", "firstName":"toshiba Toshiba Satellite C850 C855  INVENTEC DAKAR10F DAKAR10FG.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTXM1eGdLdmhHWU0/preview"
+new Contact({"id":"0B_JDYj6vtQQiTXM1eGdLdmhHWU0", "createdOn":"", "firstName":"toshiba Toshiba Satellite C850 C855 INVENTEC DAKAR10F DAKAR10FG.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTXM1eGdLdmhHWU0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiTW5KZ3FsMHlFRTQ", "createdOn":"", "firstName":"toshiba Toshiba Satellite M211 M215 (Inventec MIAMI 10G) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTW5KZ3FsMHlFRTQ/preview"
@@ -3982,7 +3983,7 @@ new Contact({"id":"0B_JDYj6vtQQieVBoa2FlQmFVOUk", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQieUQ4c2hsNm9acUU", "createdOn":"", "firstName":"toshiba Toshiba Satellite a665.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieUQ4c2hsNm9acUU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQieHV0M09lZHVFd1k", "createdOn":"", "firstName":"toshiba Toshiba Satellite L630  L635  INTENTEC Bremen10R  Rev X01 (2010 12 03).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieHV0M09lZHVFd1k/preview"
+new Contact({"id":"0B_JDYj6vtQQieHV0M09lZHVFd1k", "createdOn":"", "firstName":"toshiba Toshiba Satellite L630 L635 INTENTEC Bremen10R Rev X01 (2010 12 03).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieHV0M09lZHVFd1k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQieFRrNHdwNlVnTjA", "createdOn":"", "firstName":"hp  HP Pavilion DV2000 Intel 945 akita schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieFRrNHdwNlVnTjA/preview"
@@ -4084,7 +4085,7 @@ new Contact({"id":"0B_JDYj6vtQQiUlBNNS1uRkc3aGM", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiS3pjQU1IMExsMzg", "createdOn":"", "firstName":"toshiba Toshiba Satellite L750 L755 Quanta BLBD.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS3pjQU1IMExsMzg/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRWdjRk9vNDFQdzA", "createdOn":"", "firstName":"toshiba Toshiba Satellite L630  L635  INTENTEC Bremen10R  Rev X01 BM10 6050A2338402 MB A02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRWdjRk9vNDFQdzA/preview"
+new Contact({"id":"0B_JDYj6vtQQiRWdjRk9vNDFQdzA", "createdOn":"", "firstName":"toshiba Toshiba Satellite L630 L635 INTENTEC Bremen10R Rev X01 BM10 6050A2338402 MB A02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRWdjRk9vNDFQdzA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiQXV5enBYeDVWeGs", "createdOn":"", "firstName":"toshiba scheme toshiba satelite l500 (la 5322p).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQXV5enBYeDVWeGs/preview"
@@ -4126,7 +4127,7 @@ new Contact({"id":"0B_JDYj6vtQQiMDM3b3V3ek15a1k", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiSVBtLWh6VW9vSEU", "createdOn":"", "firstName":"toshiba Toshiba M70 352 rev10.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSVBtLWh6VW9vSEU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQieHR0ekltRTRocHc", "createdOn":"", "firstName":"toshiba Toshiba Satellite L500  COMPAL LA 4982P.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieHR0ekltRTRocHc/preview"
+new Contact({"id":"0B_JDYj6vtQQieHR0ekltRTRocHc", "createdOn":"", "firstName":"toshiba Toshiba Satellite L500 COMPAL LA 4982P.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieHR0ekltRTRocHc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQid19uZDVObzdndHM", "createdOn":"", "firstName":"toshiba Toshiba Tecra m3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQid19uZDVObzdndHM/preview"
@@ -4210,7 +4211,7 @@ new Contact({"id":"0B_JDYj6vtQQiTGh1YnF5Z1VzOE0", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiT1ZBYmNtNDNjSTg", "createdOn":"", "firstName":"hp  HP OmniBook XE3 7113d LA 733B.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiT1ZBYmNtNDNjSTg/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiT0hGYXFtMTRoNmc", "createdOn":"", "firstName":"toshiba Toshiba Satellite L600D  P205D.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiT0hGYXFtMTRoNmc/preview"
+new Contact({"id":"0B_JDYj6vtQQiT0hGYXFtMTRoNmc", "createdOn":"", "firstName":"toshiba Toshiba Satellite L600D P205D.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiT0hGYXFtMTRoNmc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiSktIWHI0V1lsQkE", "createdOn":"", "firstName":"toshiba Toshiba P30 P35 la 2371.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSktIWHI0V1lsQkE/preview"
@@ -4219,7 +4220,7 @@ new Contact({"id":"0B_JDYj6vtQQiSktIWHI0V1lsQkE", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiSFNKNlhTRDN0ck0", "createdOn":"", "firstName":"hp  HP Compaq 4520S (Quanta GC9A) ​​Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSFNKNlhTRDN0ck0/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRnhVMnpIdFUyaU0", "createdOn":"", "firstName":"toshiba Satellite A500   Bradford 10AT  KSWAA LA 4981P REV1.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRnhVMnpIdFUyaU0/preview"
+new Contact({"id":"0B_JDYj6vtQQiRnhVMnpIdFUyaU0", "createdOn":"", "firstName":"toshiba Satellite A500 Bradford 10AT KSWAA LA 4981P REV1.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRnhVMnpIdFUyaU0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRi1lYU5fei1DRDA", "createdOn":"", "firstName":"toshiba Toshiba Satellite M45 (Inventec SAN ANTONIO 10) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRi1lYU5fei1DRDA/preview"
@@ -4264,7 +4265,7 @@ new Contact({"id":"0B_JDYj6vtQQiMkdzMUdwQ3JPekE", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiM0FhYV9EMUxpYnc", "createdOn":"", "firstName":"toshiba Toshiba c650d 5299f Inventec MAS10AD.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM0FhYV9EMUxpYnc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiM05MQ2djbzIwcE0", "createdOn":"", "firstName":"toshiba Inventec PT10g POTOMAC  10g  6050a2171501  rev a01 a300 a305.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM05MQ2djbzIwcE0/preview"
+new Contact({"id":"0B_JDYj6vtQQiM05MQ2djbzIwcE0", "createdOn":"", "firstName":"toshiba Inventec PT10g POTOMAC 10g 6050a2171501 rev a01 a300 a305.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM05MQ2djbzIwcE0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiLWc1emF5UURZYmc", "createdOn":"", "firstName":"toshiba Toshiba Satellite A60 A65 (Inventec OSAKA 30) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLWc1emF5UURZYmc/preview"
@@ -4273,7 +4274,7 @@ new Contact({"id":"0B_JDYj6vtQQiLWc1emF5UURZYmc", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiLU1oZWJVdzh1ZkU", "createdOn":"", "firstName":"toshiba Toshiba Satellite A505 S6025 (Quanta TW3A) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLU1oZWJVdzh1ZkU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiLTZXRVZlVG5wc1E", "createdOn":"", "firstName":"toshiba Toshiba NB510  NB515 DOLPHIN10 6050A2488301 MB A02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLTZXRVZlVG5wc1E/preview"
+new Contact({"id":"0B_JDYj6vtQQiLTZXRVZlVG5wc1E", "createdOn":"", "firstName":"toshiba Toshiba NB510 NB515 DOLPHIN10 6050A2488301 MB A02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLTZXRVZlVG5wc1E/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQieXNpaXY2aVRxdGc", "createdOn":"", "firstName":"toshiba Toshiba NB200 NB205 (Compal LA 5121) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieXNpaXY2aVRxdGc/preview"
@@ -4321,7 +4322,7 @@ new Contact({"id":"0B_JDYj6vtQQiYU9ZSUVBOWdzbDA", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiWll3WjBPQWlyY2c", "createdOn":"", "firstName":"toshiba Toshiba Satellite A135 S2686   COMPAL LA 3391P IAYAA   REV 0.3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWll3WjBPQWlyY2c/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWHZnRzExQmVwWTg", "createdOn":"", "firstName":"toshiba toshiba satellite c850 c855  inventec dakar10f .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWHZnRzExQmVwWTg/preview"
+new Contact({"id":"0B_JDYj6vtQQiWHZnRzExQmVwWTg", "createdOn":"", "firstName":"toshiba toshiba satellite c850 c855 inventec dakar10f .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWHZnRzExQmVwWTg/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVU9zWHBwa3FwSFk", "createdOn":"", "firstName":"hp  HP Mini 311, HP Pavilion DM1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVU9zWHBwa3FwSFk/preview"
@@ -4417,7 +4418,7 @@ new Contact({"id":"0B_JDYj6vtQQiSmlUR0Q0cFVxTDQ", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiSTB3S0REZkNNT1U", "createdOn":"", "firstName":"toshiba Toshiba M100   COMPAL LA 3011.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSTB3S0REZkNNT1U/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiS05lcDNjVmdRbUE", "createdOn":"", "firstName":"toshiba Toshiba Satellite A210  A215 (AMD).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS05lcDNjVmdRbUE/preview"
+new Contact({"id":"0B_JDYj6vtQQiS05lcDNjVmdRbUE", "createdOn":"", "firstName":"toshiba Toshiba Satellite A210 A215 (AMD).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS05lcDNjVmdRbUE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiNlJGcHdKeUdLM3M", "createdOn":"", "firstName":"toshiba L750 14h DA0BLEMB6E0 Quanta BLE BLED.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNlJGcHdKeUdLM3M/preview"
@@ -4459,13 +4460,13 @@ new Contact({"id":"0B_JDYj6vtQQicXlVbE1ZZktWWVU", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiblRrTUFfMU1jU1k", "createdOn":"", "firstName":"toshiba Satelite P200D 8b839 Compal LA 3831P.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiblRrTUFfMU1jU1k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQibUN4SHhtSm1nTEk", "createdOn":"", "firstName":"hp  HP PROBOOK 4510S  Inventec Zenith UMA DDR3 6050A2297401.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibUN4SHhtSm1nTEk/preview"
+new Contact({"id":"0B_JDYj6vtQQibUN4SHhtSm1nTEk", "createdOn":"", "firstName":"hp  HP PROBOOK 4510S Inventec Zenith UMA DDR3 6050A2297401.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibUN4SHhtSm1nTEk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQibFh1eFRfNjI2VEU", "createdOn":"", "firstName":"toshiba Toshiba C650d  c600  l630 INVENTEC MANAUS 10 CS BUILD REV AX1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibFh1eFRfNjI2VEU/preview"
+new Contact({"id":"0B_JDYj6vtQQibFh1eFRfNjI2VEU", "createdOn":"", "firstName":"toshiba Toshiba C650d c600 l630 INVENTEC MANAUS 10 CS BUILD REV AX1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibFh1eFRfNjI2VEU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQib2NZQ0RHWnk5VzQ", "createdOn":"", "firstName":"toshiba Toshiba Satellite L650 BERLIN 10G BL10G  power.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib2NZQ0RHWnk5VzQ/preview"
+new Contact({"id":"0B_JDYj6vtQQib2NZQ0RHWnk5VzQ", "createdOn":"", "firstName":"toshiba Toshiba Satellite L650 BERLIN 10G  BL10G  power.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib2NZQ0RHWnk5VzQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiajVXNl9iUlhnekk", "createdOn":"", "firstName":"hp  hp pavilion hdx quanta ut7 rev e3a sch.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiajVXNl9iUlhnekk/preview"
@@ -4537,7 +4538,7 @@ new Contact({"id":"0B_JDYj6vtQQiRDhVTEo2M0hmZGM", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiQjJXSF9HWk5nMFE", "createdOn":"", "firstName":"toshiba AM4825P.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQjJXSF9HWk5nMFE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQXNEaU04b3lhWE0", "createdOn":"", "firstName":"toshiba Satellite C650 655 D  Inventec Manaus 10R 56e92.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQXNEaU04b3lhWE0/preview"
+new Contact({"id":"0B_JDYj6vtQQiQXNEaU04b3lhWE0", "createdOn":"", "firstName":"toshiba Satellite C650 655 D Inventec Manaus 10R 56e92.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQXNEaU04b3lhWE0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiQU5LM3dRelQ3NG8", "createdOn":"", "firstName":"hp  HP Compaq Mini 700 (Inventec HARBOUR) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQU5LM3dRelQ3NG8/preview"
@@ -4549,7 +4550,7 @@ new Contact({"id":"0B_JDYj6vtQQiNzhoUTl6N01ndmM", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiNzAzb3JfT1lGRDQ", "createdOn":"", "firstName":"toshiba Toshiba Satellite 1130 1135 (Compal LA 1641) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNzAzb3JfT1lGRDQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiNHNEaFdNMmFiUXM", "createdOn":"", "firstName":"toshiba Satellite C640  PSC02G 01400G. 6050A2357502 MB A02 TI.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNHNEaFdNMmFiUXM/preview"
+new Contact({"id":"0B_JDYj6vtQQiNHNEaFdNMmFiUXM", "createdOn":"", "firstName":"toshiba Satellite C640 PSC02G 01400G. 6050A2357502 MB A02 TI.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNHNEaFdNMmFiUXM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiNFFSZkRlVWJNaTg", "createdOn":"", "firstName":"hp  HP Pavilion DV1000 DV4000 ZE2000 Compaq M2000 (Quanta CT3) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNFFSZkRlVWJNaTg/preview"
@@ -5035,7 +5036,7 @@ new Contact({"id":"0B_JDYj6vtQQiWk42dDRIeDVxdXc", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiUi1FTWN2QmJCU1k", "createdOn":"", "firstName":"dell Vostro 1200 (Compal LA 3821P) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUi1FTWN2QmJCU1k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiU1I2c3Z2Vkc2QnM", "createdOn":"", "firstName":"asus A8T  M schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU1I2c3Z2Vkc2QnM/preview"
+new Contact({"id":"0B_JDYj6vtQQiU1I2c3Z2Vkc2QnM", "createdOn":"", "firstName":"asus A8T M schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU1I2c3Z2Vkc2QnM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiSk9mekVkQUNodG8", "createdOn":"", "firstName":"hp  HP ProBook 4311s laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSk9mekVkQUNodG8/preview"
@@ -5212,7 +5213,7 @@ new Contact({"id":"0B_JDYj6vtQQid3hKOEZMeWF2TWM", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQibG9YQlRkU1RSS0k", "createdOn":"", "firstName":"dell Latitude D610 (Quanta JM5B) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibG9YQlRkU1RSS0k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQib0ZMblNOUHUyOWM", "createdOn":"", "firstName":"asus A8J  F schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib0ZMblNOUHUyOWM/preview"
+new Contact({"id":"0B_JDYj6vtQQib0ZMblNOUHUyOWM", "createdOn":"", "firstName":"asus A8J F schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib0ZMblNOUHUyOWM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQialBlTE8xUFUtNHc", "createdOn":"", "firstName":"dell Inspiron 6400 (Quanta FM1) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQialBlTE8xUFUtNHc/preview"
@@ -5524,7 +5525,7 @@ new Contact({"id":"0B_JDYj6vtQQidnJnUU42YUdHNzA", "createdOn":"", "firstName":"c
 new Contact({"id":"0B_JDYj6vtQQib3dfRnE1MEdPbzA", "createdOn":"", "firstName":"msi msi a6200 ms 1682 rev 0b sch.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib3dfRnE1MEdPbzA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQib0hpeEZjY0I2dDA", "createdOn":"", "firstName":"samsung 47259 FIRENZE2 R NP R40plus.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib0hpeEZjY0I2dDA/preview"
+new Contact({"id":"0B_JDYj6vtQQib0hpeEZjY0I2dDA", "createdOn":"", "firstName":"samsung 47259  FIRENZE2 R NP R40plus.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib0hpeEZjY0I2dDA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiakF1VTlERkhkRW8", "createdOn":"", "firstName":"samsung q1 User’s Guide manual.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiakF1VTlERkhkRW8/preview"
@@ -5584,7 +5585,7 @@ new Contact({"id":"0B_JDYj6vtQQiMjA2cm5Nb0ZVRmc", "createdOn":"", "firstName":"m
 new Contact({"id":"0B_JDYj6vtQQidzloM01ES0M0aHM", "createdOn":"", "firstName":"samsung  SENS X20 14ed6.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidzloM01ES0M0aHM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiaHM4YXg3cGFaOWs", "createdOn":"", "firstName":"samsung 32fb0 np m55 cichlid 3 rev 1.4 sch.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaHM4YXg3cGFaOWs/preview"
+new Contact({"id":"0B_JDYj6vtQQiaHM4YXg3cGFaOWs", "createdOn":"", "firstName":"samsung 32fb0  np m55 cichlid 3 rev 1.4 sch.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaHM4YXg3cGFaOWs/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiYklROGU4Vk9vcU0", "createdOn":"", "firstName":"benq S52 DisassemblyFlowChart F.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYklROGU4Vk9vcU0/preview"
@@ -5707,7 +5708,7 @@ new Contact({"id":"0B_JDYj6vtQQiRWp4NmluR0dPVVE", "createdOn":"", "firstName":"c
 new Contact({"id":"0B_JDYj6vtQQiQXVnVUFfNTZyMlk", "createdOn":"", "firstName":"msi MS 9620 V.0A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQXVnVUFfNTZyMlk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQVVuUm5RRHBDUlU", "createdOn":"", "firstName":"samsung 8b5c6 Dresden INT r1.00.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQVVuUm5RRHBDUlU/preview"
+new Contact({"id":"0B_JDYj6vtQQiQVVuUm5RRHBDUlU", "createdOn":"", "firstName":"samsung 8b5c6  Dresden INT r1.00.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQVVuUm5RRHBDUlU/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiQUtNM1hqUXFMRmM", "createdOn":"", "firstName":"samsung NP R60FE01.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQUtNM1hqUXFMRmM/preview"
@@ -5797,7 +5798,7 @@ new Contact({"id":"0B_JDYj6vtQQiUmJZWGNJWVZDSHc", "createdOn":"", "firstName":"m
 new Contact({"id":"0B_JDYj6vtQQiUjVwWHNaNnFGaFE", "createdOn":"", "firstName":"samsung p560 08 Wiring Diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUjVwWHNaNnFGaFE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiUXNmal9qMXNwSnc", "createdOn":"", "firstName":"samsung d5397 NP R467 NP R469 (QingDao ULCPC) Laptop Schematics.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUXNmal9qMXNwSnc/preview"
+new Contact({"id":"0B_JDYj6vtQQiUXNmal9qMXNwSnc", "createdOn":"", "firstName":"samsung d5397  NP R467 NP R469 (QingDao ULCPC) Laptop Schematics.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUXNmal9qMXNwSnc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiTm93a1c3OFM5MlU", "createdOn":"", "firstName":"compal cy23 ch 4.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTm93a1c3OFM5MlU/preview"
@@ -6040,7 +6041,7 @@ new Contact({"id":"0B_JDYj6vtQQiNW1XbUxfSTV3aFk", "createdOn":"", "firstName":"b
 new Contact({"id":"0B_JDYj6vtQQiNUpHc05Qd20xUHM", "createdOn":"", "firstName":"nec Nec Versa 5000 Series Laptop.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNUpHc05Qd20xUHM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiNU1DN2s2QjY5OGc", "createdOn":"", "firstName":"samsung q45 Q45 exploded view part list.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNU1DN2s2QjY5OGc/preview"
+new Contact({"id":"0B_JDYj6vtQQiNU1DN2s2QjY5OGc", "createdOn":"", "firstName":"samsung q45 Q45 exploded view  part list.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNU1DN2s2QjY5OGc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiN2lVQnZiV0lBcW8", "createdOn":"", "firstName":"nec Nec Versa 2000 Series Laptop.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN2lVQnZiV0lBcW8/preview"
@@ -6307,7 +6308,7 @@ new Contact({"id":"0B_JDYj6vtQQiRmxiNDE2V2Raamc", "createdOn":"", "firstName":"q
 new Contact({"id":"0B_JDYj6vtQQiRXZvZEVybzFOQmM", "createdOn":"", "firstName":"samsung NP X06 PCB Diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRXZvZEVybzFOQmM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRExPcXhWbkRFWnc", "createdOn":"", "firstName":"samsung q45 Q45 disassembly reassembly.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRExPcXhWbkRFWnc/preview"
+new Contact({"id":"0B_JDYj6vtQQiRExPcXhWbkRFWnc", "createdOn":"", "firstName":"samsung q45 Q45 disassembly  reassembly.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRExPcXhWbkRFWnc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRElfb3c2ZnlsOFE", "createdOn":"", "firstName":"packardbell easynote w7 dragon sn.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRElfb3c2ZnlsOFE/preview"
@@ -6436,7 +6437,7 @@ new Contact({"id":"0B_JDYj6vtQQiVG1ubWhPUEo1SE0", "createdOn":"", "firstName":"l
 new Contact({"id":"0B_JDYj6vtQQiVFpSZDZEbVlUUDQ", "createdOn":"", "firstName":"packardbell easy lite versa lite.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVFpSZDZEbVlUUDQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiV21CRk9WWm12Qk0", "createdOn":"", "firstName":"quanta AS6530 ZK3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiV21CRk9WWm12Qk0/preview"
+new Contact({"id":"0B_JDYj6vtQQiV21CRk9WWm12Qk0", "createdOn":"", "firstName":"quanta AS6530  ZK3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiV21CRk9WWm12Qk0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiV1RIQjE3SU5mV28", "createdOn":"", "firstName":"samsung p560 05 Schematic Diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiV1RIQjE3SU5mV28/preview"
@@ -6604,7 +6605,7 @@ new Contact({"id":"0B_JDYj6vtQQiTUNxQnFtSDNJWVU", "createdOn":"", "firstName":"l
 new Contact({"id":"0B_JDYj6vtQQiTFc2VXdVTEJLME0", "createdOn":"", "firstName":"samsung  np p30 p35 corona rev 0.3 sch.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTFc2VXdVTEJLME0/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiSjZuOGluZ3JzcUE", "createdOn":"", "firstName":"samsung 7d9c0 FIRENZE II REV X03 R40.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSjZuOGluZ3JzcUE/preview"
+new Contact({"id":"0B_JDYj6vtQQiSjZuOGluZ3JzcUE", "createdOn":"", "firstName":"samsung 7d9c0  FIRENZE II REV X03 R40.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSjZuOGluZ3JzcUE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiSWdJdzVmMmZ0cUE", "createdOn":"", "firstName":"samsung  np r510 Disassembly.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSWdJdzVmMmZ0cUE/preview"
@@ -6898,7 +6899,7 @@ new Contact({"id":"0B_JDYj6vtQQiMjd5SVM5VXBtaU0", "createdOn":"", "firstName":"s
 new Contact({"id":"0B_JDYj6vtQQiMGNXdVZEY2JLQnM", "createdOn":"", "firstName":"sony SONY VGN SR28.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMGNXdVZEY2JLQnM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiM3Z1M2dlQmF4Sk0", "createdOn":"", "firstName":"sony Sony Vaio VGN AW series MBX 194 M780 sd FOXCONN M780 CantigaP WPCE775L.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM3Z1M2dlQmF4Sk0/preview"
+new Contact({"id":"0B_JDYj6vtQQiM3Z1M2dlQmF4Sk0", "createdOn":"", "firstName":"sony Sony Vaio VGN AW series MBX 194 M780  sd FOXCONN M780 CantigaP WPCE775L.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM3Z1M2dlQmF4Sk0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiM19nX0xzdDFIWUE", "createdOn":"", "firstName":"sony 452.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM19nX0xzdDFIWUE/preview"
@@ -7078,7 +7079,7 @@ new Contact({"id":"0B_JDYj6vtQQiajZQWkFfUE9sSHM", "createdOn":"", "firstName":"w
 new Contact({"id":"0B_JDYj6vtQQiZVVmTi1HU0g3b2s", "createdOn":"", "firstName":"sony SONY VGN FZ25 MBX 165 MS91 REV 1.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZVVmTi1HU0g3b2s/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZHdPb01OQWZ3cjg", "createdOn":"", "firstName":"sony Sony Vaio PCG 61611Quanta NE7   REV 3A 22MAR2010Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZHdPb01OQWZ3cjg/preview"
+new Contact({"id":"0B_JDYj6vtQQiZHdPb01OQWZ3cjg", "createdOn":"", "firstName":"sony Sony Vaio PCG 61611Quanta NE7    REV 3A 22MAR2010Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZHdPb01OQWZ3cjg/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiYl9naWI5R1VESTA", "createdOn":"", "firstName":"sony Sony VPC S Series E28093 MBX 216 Free Laptop Schematic.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYl9naWI5R1VESTA/preview"
@@ -7567,7 +7568,7 @@ new Contact({"id":"0B_JDYj6vtQQiZGhvcGtGRVNwUkU", "createdOn":"", "firstName":"s
 new Contact({"id":"0B_JDYj6vtQQiZFVJTWJmVm05RW8", "createdOn":"", "firstName":"sony sony vaio vgn aw m780 foxconn mbx 194.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZFVJTWJmVm05RW8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZE5PNS04SmRQT1U", "createdOn":"", "firstName":"sony mbx 237 v030 docking db mp 0104 2030 f.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZE5PNS04SmRQT1U/preview"
+new Contact({"id":"0B_JDYj6vtQQiZE5PNS04SmRQT1U", "createdOn":"", "firstName":"sony mbx 237 v030 docking db mp 0104  2030 f.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZE5PNS04SmRQT1U/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiZDNxdWdmMXE3SjA", "createdOn":"", "firstName":"sony Sony Vaio VGN AR71MR.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZDNxdWdmMXE3SjA/preview"
@@ -7621,7 +7622,7 @@ new Contact({"id":"0B_JDYj6vtQQiS2VKVS1xSERYckU", "createdOn":"", "firstName":"s
 new Contact({"id":"0B_JDYj6vtQQiRWFCNE1XMXNxWEU", "createdOn":"", "firstName":"sony vgnFS.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRWFCNE1XMXNxWEU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRW5oaUhURWFwbTg", "createdOn":"", "firstName":"sony Sony Vaio VGN AW series MBX 194 M780 sd FOXCONN M780 CantigaP WPCE775L Sony Vaio VGN AW series MBX 194 M780 sd FOXCONN M780 CantigaP WPCE775L.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRW5oaUhURWFwbTg/preview"
+new Contact({"id":"0B_JDYj6vtQQiRW5oaUhURWFwbTg", "createdOn":"", "firstName":"sony Sony Vaio VGN AW series MBX 194 M780  sd FOXCONN M780 CantigaP WPCE775L Sony Vaio VGN AW series MBX 194 M780  sd FOXCONN M780 CantigaP WPCE775L.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRW5oaUhURWFwbTg/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRE94NlkxWndCZzQ", "createdOn":"", "firstName":"sony SONY PCG 5J5M VGN CR21S QUANTA GD1A MBX 177A REV 2A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRE94NlkxWndCZzQ/preview"
@@ -8230,7 +8231,7 @@ new Contact({"id":"0B_JDYj6vtQQicjZIUGJIcEJQREU", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiR3pXdTZWaW5wcjQ", "createdOn":"", "firstName":"hp  Compaq Presario C700 Service manual c01301275.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR3pXdTZWaW5wcjQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiN3pxUjR6cTlEdG8", "createdOn":"", "firstName":"hp  COMPAQ V3000 V3500  DV2000 DV2500 AMD wistron TIBET.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN3pxUjR6cTlEdG8/preview"
+new Contact({"id":"0B_JDYj6vtQQiN3pxUjR6cTlEdG8", "createdOn":"", "firstName":"hp  COMPAQ V3000 V3500 DV2000 DV2500 AMD wistron TIBET.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN3pxUjR6cTlEdG8/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQieG5vVHV0a1ctVFE", "createdOn":"", "firstName":"hp  Compaq Presario CQ61 OP6 OP7 Tango Ballet DA00P6MB6D0 0P6 0P7 .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieG5vVHV0a1ctVFE/preview"
@@ -8335,7 +8336,7 @@ new Contact({"id":"0B_JDYj6vtQQiY0o0ZkllV1N6R1E", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQieXBMLUkwOTFnOU0", "createdOn":"", "firstName":"dell  Inspiron 6000 Compal LA 2151 TOBAGO Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieXBMLUkwOTFnOU0/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidlRkNEh3S3ZKeTg", "createdOn":"", "firstName":"dell  Inspiron 2200 QUANTA VM7 TONGA TYLER Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidlRkNEh3S3ZKeTg/preview"
+new Contact({"id":"0B_JDYj6vtQQidlRkNEh3S3ZKeTg", "createdOn":"", "firstName":"dell  Inspiron 2200 QUANTA VM7 TONGA  TYLER Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidlRkNEh3S3ZKeTg/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiTTVoZG1iQ0x5emM", "createdOn":"", "firstName":"dell  inspiron 1520 1720 quanta fm5 corsica gilligan discrete rev x02 sch.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTTVoZG1iQ0x5emM/preview"
@@ -8386,7 +8387,7 @@ new Contact({"id":"0B_JDYj6vtQQiZlJTR3FjNkswZ0k", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiWVJFVXF3QUxzWmM", "createdOn":"", "firstName":"dell Vostro 1000 schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWVJFVXF3QUxzWmM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQid3NMQW4xVWtLMjQ", "createdOn":"", "firstName":"dell  Studio XPS 1640 RM3 .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQid3NMQW4xVWtLMjQ/preview"
+new Contact({"id":"0B_JDYj6vtQQid3NMQW4xVWtLMjQ", "createdOn":"", "firstName":"dell Studio XPS 1640 RM3 .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQid3NMQW4xVWtLMjQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVFVpdVdkeTFpeEU", "createdOn":"", "firstName":"dell STUDIO XPS 1340 QUANTA IM3 (Jolie).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVFVpdVdkeTFpeEU/preview"
@@ -8497,10 +8498,10 @@ new Contact({"id":"0B_JDYj6vtQQibkVXSlp2MEVLSDA", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiWlJRcmtMR1h2N3c", "createdOn":"", "firstName":"dell compal la 3071p r1 HAU30 DA800004H1L.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWlJRcmtMR1h2N3c/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWlFUX0pPYXc2RWM", "createdOn":"", "firstName":"dell 14fc7 Inspiron Mini 10 1012   COMPAL LA 5732P NIM10 UMA   REV 0.2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWlFUX0pPYXc2RWM/preview"
+new Contact({"id":"0B_JDYj6vtQQiWlFUX0pPYXc2RWM", "createdOn":"", "firstName":"dell 14fc7  Inspiron Mini 10 1012   COMPAL LA 5732P NIM10 UMA   REV 0.2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWlFUX0pPYXc2RWM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicDRrRE5tdE80ZU0", "createdOn":"", "firstName":"dell 7e38e INSPIRON 1370 (Compal LA 5541P).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicDRrRE5tdE80ZU0/preview"
+new Contact({"id":"0B_JDYj6vtQQicDRrRE5tdE80ZU0", "createdOn":"", "firstName":"dell 7e38e  INSPIRON 1370 (Compal LA 5541P).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicDRrRE5tdE80ZU0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVjREM29Xc2hyUU0", "createdOn":"", "firstName":"asus F5SL Troubleshooting Guide.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVjREM29Xc2hyUU0/preview"
@@ -8581,7 +8582,7 @@ new Contact({"id":"0B_JDYj6vtQQiUFN4RTVaLWszY2c", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiaVQ4aW5lNEJpZTA", "createdOn":"", "firstName":"asus z94rp r1.1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaVQ4aW5lNEJpZTA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiYlRzRmVaZElvUWc", "createdOn":"", "firstName":"asus X51 T12  T12R.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYlRzRmVaZElvUWc/preview"
+new Contact({"id":"0B_JDYj6vtQQiYlRzRmVaZElvUWc", "createdOn":"", "firstName":"asus X51 T12 T12R.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYlRzRmVaZElvUWc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiMmthX3FQc01xenc", "createdOn":"", "firstName":"asus UX50.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMmthX3FQc01xenc/preview"
@@ -8611,7 +8612,7 @@ new Contact({"id":"0B_JDYj6vtQQiWjV2ZndybUNxREE", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQidnFLbHhHVjctTnc", "createdOn":"", "firstName":"asus N50A N51A .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidnFLbHhHVjctTnc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidUNrdzV6WlNtV2s", "createdOn":"", "firstName":"asus N50A  N51A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidUNrdzV6WlNtV2s/preview"
+new Contact({"id":"0B_JDYj6vtQQidUNrdzV6WlNtV2s", "createdOn":"", "firstName":"asus N50A N51A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidUNrdzV6WlNtV2s/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiQ01CUUxYZlVkVHc", "createdOn":"", "firstName":"asus M50vm schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQ01CUUxYZlVkVHc/preview"
@@ -8656,7 +8657,7 @@ new Contact({"id":"0B_JDYj6vtQQiSzAtRmp1ZXBaSWc", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiaF9vdHlYZ1JGY3M", "createdOn":"", "firstName":"asus F3S v F3S c R20 QIMONDA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaF9vdHlYZ1JGY3M/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiVU82ZjRwc1RUNHc", "createdOn":"", "firstName":"asus Elsa  Power Sequence.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVU82ZjRwc1RUNHc/preview"
+new Contact({"id":"0B_JDYj6vtQQiVU82ZjRwc1RUNHc", "createdOn":"", "firstName":"asus Elsa Power Sequence.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVU82ZjRwc1RUNHc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiS09fd1kyMmN1Q2M", "createdOn":"", "firstName":"asus EeePC P900.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS09fd1kyMmN1Q2M/preview"
@@ -8743,7 +8744,7 @@ new Contact({"id":"0B_JDYj6vtQQiamhVQmw1QjVPTDQ", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiLUhna0Uzb2l5dHc", "createdOn":"", "firstName":"asus eee pc 1000HE MB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLUhna0Uzb2l5dHc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQibXZRWlpydk1RdUk", "createdOn":"", "firstName":"asus eee pc 1000  rev 1.2g.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibXZRWlpydk1RdUk/preview"
+new Contact({"id":"0B_JDYj6vtQQibXZRWlpydk1RdUk", "createdOn":"", "firstName":"asus eee pc 1000 rev 1.2g.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibXZRWlpydk1RdUk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQibmdUbXFvZlZnUmc", "createdOn":"", "firstName":"asus A8J.F.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibmdUbXFvZlZnUmc/preview"
@@ -8752,7 +8753,7 @@ new Contact({"id":"0B_JDYj6vtQQibmdUbXFvZlZnUmc", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiWHAzQUpsd0pJSGM", "createdOn":"", "firstName":"asus A6K laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWHAzQUpsd0pJSGM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicVBPcEdZMFRlR0E", "createdOn":"", "firstName":"asus A6K  SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicVBPcEdZMFRlR0E/preview"
+new Contact({"id":"0B_JDYj6vtQQicVBPcEdZMFRlR0E", "createdOn":"", "firstName":"asus A6K SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicVBPcEdZMFRlR0E/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiY2tDNEdRRFpmTmc", "createdOn":"", "firstName":"asus a6j mb 1122.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiY2tDNEdRRFpmTmc/preview"
@@ -8767,7 +8768,7 @@ new Contact({"id":"0B_JDYj6vtQQiNkxLZ0N5WTd5TkE", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQieGNmb0RPcXZTNXc", "createdOn":"", "firstName":"asus 11896 K42Jv.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieGNmb0RPcXZTNXc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiREZ0MXJ2SktjMTQ", "createdOn":"", "firstName":"asus  eee pc 904HD 1.3g.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiREZ0MXJ2SktjMTQ/preview"
+new Contact({"id":"0B_JDYj6vtQQiREZ0MXJ2SktjMTQ", "createdOn":"", "firstName":"asus eee pc 904HD 1.3g.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiREZ0MXJ2SktjMTQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiNVFDMEZqejBpMXM", "createdOn":"", "firstName":"apple M97 051 7537 A000[1].schematic.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNVFDMEZqejBpMXM/preview"
@@ -8776,7 +8777,7 @@ new Contact({"id":"0B_JDYj6vtQQiNVFDMEZqejBpMXM", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiUkYxOW44OXhNcFk", "createdOn":"", "firstName":"apple FA255 Macbook M42C MLB schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUkYxOW44OXhNcFk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiNElwSmk3ZVZSZXc", "createdOn":"", "firstName":"apple cca28 Macbook Pro 13 A1278 (K24, 820 2530).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNElwSmk3ZVZSZXc/preview"
+new Contact({"id":"0B_JDYj6vtQQiNElwSmk3ZVZSZXc", "createdOn":"", "firstName":"apple cca28  Macbook Pro 13 A1278 (K24, 820 2530).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNElwSmk3ZVZSZXc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQic294ekFzSDdvdlE", "createdOn":"", "firstName":"apple Macbook Pro 13 A1278.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic294ekFzSDdvdlE/preview"
@@ -8800,7 +8801,7 @@ new Contact({"id":"0B_JDYj6vtQQiTEpYeXZ4QU9Kbms", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiWU94UnhEd2lNaDA", "createdOn":"", "firstName":"apple A2186 820 2850 A 5cbdb While Arrow MLB K18.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWU94UnhEd2lNaDA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRTVQYVBFNnR6RlE", "createdOn":"", "firstName":"apple a520f MacBook Unibody A1342 (K84, 820 2567).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRTVQYVBFNnR6RlE/preview"
+new Contact({"id":"0B_JDYj6vtQQiRTVQYVBFNnR6RlE", "createdOn":"", "firstName":"apple a520f  MacBook Unibody A1342 (K84, 820 2567).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRTVQYVBFNnR6RlE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiMW9PZWVQLWh5azg", "createdOn":"", "firstName":"apple A1342 635c2 K87 MLB 051 8561 820 2877 C00.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMW9PZWVQLWh5azg/preview"
@@ -8815,7 +8816,7 @@ new Contact({"id":"0B_JDYj6vtQQiOFlpZGZoaWZSYTQ", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiU2Jja1pfSXh1cFk", "createdOn":"", "firstName":"apple a1278 J30 820 3115 B 051 9058.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiU2Jja1pfSXh1cFk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRElNZy02azhLQXc", "createdOn":"", "firstName":"apple 99208 Macbook Pro A1386 (MBP 15MLB) schematics.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRElNZy02azhLQXc/preview"
+new Contact({"id":"0B_JDYj6vtQQiRElNZy02azhLQXc", "createdOn":"", "firstName":"apple 99208  Macbook Pro A1386 (MBP 15MLB) schematics.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRElNZy02azhLQXc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQibnl1enhqVXJKcmM", "createdOn":"", "firstName":"apple 95cbc 820 2796 051 8379 Air A1370 K99(1).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibnl1enhqVXJKcmM/preview"
@@ -8830,13 +8831,13 @@ new Contact({"id":"0B_JDYj6vtQQiTU5UOWM1OEZVNjA", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiaFh2NF9CdHdOd0E", "createdOn":"", "firstName":"apple 788481843 051 8563.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaFh2NF9CdHdOd0E/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiSlE3OGNFWlBZUVE", "createdOn":"", "firstName":"apple 41df2 MacBook Pro A1226 EVT.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSlE3OGNFWlBZUVE/preview"
+new Contact({"id":"0B_JDYj6vtQQiSlE3OGNFWlBZUVE", "createdOn":"", "firstName":"apple 41df2  MacBook Pro A1226 EVT.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSlE3OGNFWlBZUVE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRVB6RTE2Z1RoS1U", "createdOn":"", "firstName":"apple 4c3e9 Macbook A1181 K36C MLB SCHEMATIC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRVB6RTE2Z1RoS1U/preview"
+new Contact({"id":"0B_JDYj6vtQQiRVB6RTE2Z1RoS1U", "createdOn":"", "firstName":"apple 4c3e9  Macbook A1181 K36C MLB SCHEMATIC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRVB6RTE2Z1RoS1U/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiTE1LbU1tV2IzNUE", "createdOn":"", "firstName":"apple 245d1 MacBook Pro A1226 DVT.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTE1LbU1tV2IzNUE/preview"
+new Contact({"id":"0B_JDYj6vtQQiTE1LbU1tV2IzNUE", "createdOn":"", "firstName":"apple 245d1  MacBook Pro A1226 DVT.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTE1LbU1tV2IzNUE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQicWotSUY3ajdlSjA", "createdOn":"", "firstName":"toshiba Toshiba laptop schematic diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicWotSUY3ajdlSjA/preview"
@@ -9952,7 +9953,7 @@ new Contact({"id":"0B_JDYj6vtQQibld2UGhaemoxSEU", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiUXVXYUc2MWxJQm8", "createdOn":"", "firstName":"apple iMac A1207 M60 PVT MLB 051 7124 RevH.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUXVXYUc2MWxJQm8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiMkoyUVRPZUlxR2c", "createdOn":"", "firstName":"apple iMac G4 800 Q59 MLB DVT 051 6497 Rev13.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMkoyUVRPZUlxR2c/preview"
+new Contact({"id":"0B_JDYj6vtQQiMkoyUVRPZUlxR2c", "createdOn":"", "firstName":"apple iMac G4 800  Q59 MLB DVT 051 6497 Rev13.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMkoyUVRPZUlxR2c/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiTWtDSnA3bWI2QXM", "createdOn":"", "firstName":"apple iMac G4 Q26C DVT MLB GEN X 051 6490 RevA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTWtDSnA3bWI2QXM/preview"
@@ -10162,7 +10163,7 @@ new Contact({"id":"0B_JDYj6vtQQiTkVBNUtHLUpia1k", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiOHRYd29ob1R0NXc", "createdOn":"", "firstName":"asus 701SDX MB. Schematic diagram. REV 1.1G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOHRYd29ob1R0NXc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRV9VNHRsZE9pclE", "createdOn":"", "firstName":"asus A3E  Rev.2.2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRV9VNHRsZE9pclE/preview"
+new Contact({"id":"0B_JDYj6vtQQiRV9VNHRsZE9pclE", "createdOn":"", "firstName":"asus A3E Rev.2.2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRV9VNHRsZE9pclE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiZWpqMm0xUXlaMVE", "createdOn":"", "firstName":"asus 900pv PINEVIEW. Schematic diagram. REV 1.0G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZWpqMm0xUXlaMVE/preview"
@@ -10303,7 +10304,7 @@ new Contact({"id":"0B_JDYj6vtQQibHFWOVdIMEtBZ3M", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiZTlfOWtOLUhIR0k", "createdOn":"", "firstName":"toshiba Toshiba L300.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZTlfOWtOLUhIR0k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWGMyRWJDWlFfWTQ", "createdOn":"", "firstName":"toshiba Toshiba U305 M600  BU1 QD BU1 MB REV 3A 0401.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWGMyRWJDWlFfWTQ/preview"
+new Contact({"id":"0B_JDYj6vtQQiWGMyRWJDWlFfWTQ", "createdOn":"", "firstName":"toshiba Toshiba U305 M600 BU1 QD BU1 MB REV 3A 0401.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWGMyRWJDWlFfWTQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiR1M0LW5rZmlobUE", "createdOn":"", "firstName":"toshiba Toshiba Schemetic Satellite L30 (QUANTA BL1).PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR1M0LW5rZmlobUE/preview"
@@ -10315,10 +10316,10 @@ new Contact({"id":"0B_JDYj6vtQQiOXQ2TkJvQlFhX2s", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiSFhWTWZIdkpwQm8", "createdOn":"", "firstName":"toshiba Toshiba Schematic Satellite A300 14S.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSFhWTWZIdkpwQm8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiR2FXRzNrX3hwZE0", "createdOn":"", "firstName":"toshiba Toshiba Schematic  Satellite A135.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR2FXRzNrX3hwZE0/preview"
+new Contact({"id":"0B_JDYj6vtQQiR2FXRzNrX3hwZE0", "createdOn":"", "firstName":"toshiba Toshiba Schematic Satellite A135.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR2FXRzNrX3hwZE0/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZjJfOHRnUnVTeTA", "createdOn":"", "firstName":"toshiba Toshiba Schematic  A200.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZjJfOHRnUnVTeTA/preview"
+new Contact({"id":"0B_JDYj6vtQQiZjJfOHRnUnVTeTA", "createdOn":"", "firstName":"toshiba Toshiba Schematic A200.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZjJfOHRnUnVTeTA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVlFxU1dxZzZxbEU", "createdOn":"", "firstName":"toshiba Toshiba Satellite U400D (Quanta BU2) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVlFxU1dxZzZxbEU/preview"
@@ -10330,13 +10331,13 @@ new Contact({"id":"0B_JDYj6vtQQiX1JQMC1kRHg1a1U", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQic0tleDl2NU9ERnc", "createdOn":"", "firstName":"toshiba Toshiba Satellite Pro L450 (Compal LA 5821P) Laptop Schematic Diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic0tleDl2NU9ERnc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidXJSYkJvM21SU2s", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite Pro L450 L455  COMPAL LA 5821P  REV 1.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidXJSYkJvM21SU2s/preview"
+new Contact({"id":"0B_JDYj6vtQQidXJSYkJvM21SU2s", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite Pro L450 L455 COMPAL LA 5821P REV 1.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidXJSYkJvM21SU2s/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQibFg2Nmx4dkpseDQ", "createdOn":"", "firstName":"toshiba Toshiba Satellite Pro L40 laptop schematics.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibFg2Nmx4dkpseDQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWE1YSHNnOHBZcTA", "createdOn":"", "firstName":"toshiba Toshiba Satellite Pro L300  INVENTEC PS10AP.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWE1YSHNnOHBZcTA/preview"
+new Contact({"id":"0B_JDYj6vtQQiWE1YSHNnOHBZcTA", "createdOn":"", "firstName":"toshiba Toshiba Satellite Pro L300 INVENTEC PS10AP.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWE1YSHNnOHBZcTA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiYkNMRzd4S2cybGc", "createdOn":"", "firstName":"toshiba Toshiba Satellite P100 P105 (Quanta BD1) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYkNMRzd4S2cybGc/preview"
@@ -10354,25 +10355,25 @@ new Contact({"id":"0B_JDYj6vtQQiOVN0UGhQQ2pkRFE", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiclBiSm1rVUk3Q0k", "createdOn":"", "firstName":"toshiba Toshiba Satellite L310 (TE1M).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiclBiSm1rVUk3Q0k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWEQ0dXUtYUNuaTg", "createdOn":"", "firstName":"toshiba Toshiba Satellite L300D (INVENTEC PS10A  6050A2174501) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWEQ0dXUtYUNuaTg/preview"
+new Contact({"id":"0B_JDYj6vtQQiWEQ0dXUtYUNuaTg", "createdOn":"", "firstName":"toshiba Toshiba Satellite L300D (INVENTEC PS10A 6050A2174501) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWEQ0dXUtYUNuaTg/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiSUZWTy1qYnp1ejg", "createdOn":"", "firstName":"toshiba Toshiba Satellite L300 L305D (INVENTEC PS10AP  6050A2175001) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSUZWTy1qYnp1ejg/preview"
+new Contact({"id":"0B_JDYj6vtQQiSUZWTy1qYnp1ejg", "createdOn":"", "firstName":"toshiba Toshiba Satellite L300 L305D (INVENTEC PS10AP 6050A2175001) laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSUZWTy1qYnp1ejg/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiNWt0SnNuQTlXVm8", "createdOn":"", "firstName":"toshiba Toshiba Satellite L300 L305D  INVENTEC PS10AP  6050A2175001  REV X01 25FEV2008Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNWt0SnNuQTlXVm8/preview"
+new Contact({"id":"0B_JDYj6vtQQiNWt0SnNuQTlXVm8", "createdOn":"", "firstName":"toshiba Toshiba Satellite L300 L305D INVENTEC PS10AP 6050A2175001 REV X01 25FEV2008Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNWt0SnNuQTlXVm8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicV9YME5TUzdUZ2c", "createdOn":"", "firstName":"toshiba Toshiba Satellite L200  Inventec Miami 10  Laptop schematics diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicV9YME5TUzdUZ2c/preview"
+new Contact({"id":"0B_JDYj6vtQQicV9YME5TUzdUZ2c", "createdOn":"", "firstName":"toshiba Toshiba Satellite L200 Inventec Miami 10 Laptop schematics diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicV9YME5TUzdUZ2c/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiSjhSYzJfdjFXYUU", "createdOn":"", "firstName":"toshiba Toshiba Satellite L10 (Quanta EW3) Laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSjhSYzJfdjFXYUU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWjZVdy1IWDR1YjQ", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite A300  QUANTA BL5S SANTA ROSA  REV 1A  SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWjZVdy1IWDR1YjQ/preview"
+new Contact({"id":"0B_JDYj6vtQQiWjZVdy1IWDR1YjQ", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite A300 QUANTA BL5S SANTA ROSA REV 1A SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWjZVdy1IWDR1YjQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidVUycmxqSTQyT28", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite A210 A215  COMPAL LA 3631P IALAA  REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidVUycmxqSTQyT28/preview"
+new Contact({"id":"0B_JDYj6vtQQidVUycmxqSTQyT28", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite A210 A215 COMPAL LA 3631P IALAA REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidVUycmxqSTQyT28/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiZDFrUEFNSDh0TzQ", "createdOn":"", "firstName":"toshiba Toshiba Portege M600 M610 (Quanta BU1)REV 1C laptop schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZDFrUEFNSDh0TzQ/preview"
@@ -10384,7 +10385,7 @@ new Contact({"id":"0B_JDYj6vtQQiQ1BtbnFTY1NBSFU", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiX0VBVnVzM2FYbTA", "createdOn":"", "firstName":"toshiba TOSHIBA L700 TE5D INTEL DISCRETE 11 0105 V1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiX0VBVnVzM2FYbTA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiMlNTWThuaHpaWGM", "createdOn":"", "firstName":"toshiba Toshiba C650d  c600  l630.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMlNTWThuaHpaWGM/preview"
+new Contact({"id":"0B_JDYj6vtQQiMlNTWThuaHpaWGM", "createdOn":"", "firstName":"toshiba Toshiba C650d c600 l630.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMlNTWThuaHpaWGM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiWFZMVWJyUERwajg", "createdOn":"", "firstName":"toshiba Toshiba A135 la 3391p.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWFZMVWJyUERwajg/preview"
@@ -10411,13 +10412,13 @@ new Contact({"id":"0B_JDYj6vtQQiZWJPaHZJLTZBUzQ", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiUHg1SktJUXlnT0k", "createdOn":"", "firstName":"toshiba M600 LA 6072.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUHg1SktJUXlnT0k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidUVQUUQ2Wm5FMW8", "createdOn":"", "firstName":"toshiba M600  BU1 QD BU1 MB REV 3A 0401.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidUVQUUQ2Wm5FMW8/preview"
+new Contact({"id":"0B_JDYj6vtQQidUVQUUQ2Wm5FMW8", "createdOn":"", "firstName":"toshiba M600 BU1 QD BU1 MB REV 3A 0401.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidUVQUUQ2Wm5FMW8/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRVlidkZwZVBSOEE", "createdOn":"", "firstName":"toshiba L645 L650.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRVlidkZwZVBSOEE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWVVMblktLW80alU", "createdOn":"", "firstName":"toshiba L600D  TE3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWVVMblktLW80alU/preview"
+new Contact({"id":"0B_JDYj6vtQQiWVVMblktLW80alU", "createdOn":"", "firstName":"toshiba L600D TE3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWVVMblktLW80alU/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVWYwMlVhVU1nRFk", "createdOn":"", "firstName":"toshiba L510 PM45 ATI DDR3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVWYwMlVhVU1nRFk/preview"
@@ -10486,7 +10487,7 @@ new Contact({"id":"0B_JDYj6vtQQiclEzVllpeElUUHM", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiOEl0YUp0VXlhdkk", "createdOn":"", "firstName":"dell Shematic VOSTRO 3450 Insprion 14R (N4110).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOEl0YUp0VXlhdkk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiaDZVWUx5UE14R0E", "createdOn":"", "firstName":"dell service manual for Inspiron 5150 b22ed7eafe  Inspiron 5150 (Compal Abacus MT).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaDZVWUx5UE14R0E/preview"
+new Contact({"id":"0B_JDYj6vtQQiaDZVWUx5UE14R0E", "createdOn":"", "firstName":"dell service manual for  Inspiron 5150 b22ed7eafe  Inspiron 5150 (Compal Abacus MT).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaDZVWUx5UE14R0E/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiWGdIRExnZUJ3dFE", "createdOn":"", "firstName":"dell QD UM7B INTEL DIS.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWGdIRExnZUJ3dFE/preview"
@@ -10534,7 +10535,7 @@ new Contact({"id":"0B_JDYj6vtQQidVJuVnUzX0VJTEk", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiMEhfMkxnN25fUG8", "createdOn":"", "firstName":"dell Latitude D600 Inspiron 600M Quanta JM2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMEhfMkxnN25fUG8/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiTXM0d1JXZU5ldDg", "createdOn":"", "firstName":"dell Laptop Model D600.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTXM0d1JXZU5ldDg/preview"
+new Contact({"id":"0B_JDYj6vtQQiTXM0d1JXZU5ldDg", "createdOn":"", "firstName":"dell Laptop  Model D600.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTXM0d1JXZU5ldDg/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiLWItS083VEcyZUk", "createdOn":"", "firstName":"dell LA 6611P.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiLWItS083VEcyZUk/preview"
@@ -10669,22 +10670,22 @@ new Contact({"id":"0B_JDYj6vtQQiWnJ1WTZUMHNLNWM", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiTllNNTd2ZEtzNzA", "createdOn":"", "firstName":"dell  inspiron 2650   COMPAL LA 1271 schematics .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTllNNTd2ZEtzNzA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidmZiZm40YkFuTTA", "createdOn":"", "firstName":"dell  Inspiron 1525  WISTRON SPEARS  AMD UMA DS2  REV 1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidmZiZm40YkFuTTA/preview"
+new Contact({"id":"0B_JDYj6vtQQidmZiZm40YkFuTTA", "createdOn":"", "firstName":"dell  Inspiron 1525   WISTRON SPEARS   AMD UMA DS2   REV 1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidmZiZm40YkFuTTA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiaEZxdlA3S3lOOXM", "createdOn":"", "firstName":"dell  Inspiron 1525   WISTRON SPEARS   AMD UMA DS2   REV 1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaEZxdlA3S3lOOXM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQibHhacUY1SVZzM2c", "createdOn":"", "firstName":"dell  Inspiron 1501  QUANTA KIRIN  FX2 with NS  REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibHhacUY1SVZzM2c/preview"
+new Contact({"id":"0B_JDYj6vtQQibHhacUY1SVZzM2c", "createdOn":"", "firstName":"dell  Inspiron 1501   QUANTA KIRIN   FX2 with NS   REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibHhacUY1SVZzM2c/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiZjhHZVhHZ1VWa00", "createdOn":"", "firstName":"dell  Inspiron 1501   QUANTA KIRIN   FX2 with NS   REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZjhHZVhHZ1VWa00/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQic3cyaDlHT2hiSGM", "createdOn":"", "firstName":"dell  Inspiron 14R N4020 Wistron DJ1 Montevina UMA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic3cyaDlHT2hiSGM/preview"
+new Contact({"id":"0B_JDYj6vtQQic3cyaDlHT2hiSGM", "createdOn":"", "firstName":"dell  Inspiron 14R N4020  Wistron DJ1 Montevina UMA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic3cyaDlHT2hiSGM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQ1RMeDYwUGVGbGs", "createdOn":"", "firstName":"dell  Inspiron 1440  WISTRON ALBA UMA  REV 1 06ABR2009Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQ1RMeDYwUGVGbGs/preview"
+new Contact({"id":"0B_JDYj6vtQQiQ1RMeDYwUGVGbGs", "createdOn":"", "firstName":"dell  Inspiron 1440   WISTRON ALBA UMA   REV  1 06ABR2009Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQ1RMeDYwUGVGbGs/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiM3Zacks5LTRUNE0", "createdOn":"", "firstName":"dell  Inspiron 1420 ELSA LANAI UMA Laptop Schematics 2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM3Zacks5LTRUNE0/preview"
@@ -10759,7 +10760,7 @@ new Contact({"id":"0B_JDYj6vtQQiVWRhWklYQXQ5dEk", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiYXNNUHQ1elZLWEU", "createdOn":"", "firstName":"dell Vostro V3700 Wistron Winery DW70 IO BD.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYXNNUHQ1elZLWEU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQTlqM0d4VEtEQ1E", "createdOn":"", "firstName":"dell Vostro 3700  WISTRON Winery Rev X01 2010.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQTlqM0d4VEtEQ1E/preview"
+new Contact({"id":"0B_JDYj6vtQQiQTlqM0d4VEtEQ1E", "createdOn":"", "firstName":"dell Vostro 3700 WISTRON Winery Rev X01 2010.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQTlqM0d4VEtEQ1E/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQib3dxYXNhRTNyZkk", "createdOn":"", "firstName":"dell vostro 1520 compal la 4596p kml50 rev 1.0sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib3dxYXNhRTNyZkk/preview"
@@ -10969,7 +10970,7 @@ new Contact({"id":"0B_JDYj6vtQQiYTRaNUdTYmVpbHM", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiWUhxZllTcHBMT2M", "createdOn":"", "firstName":"dell D620 LA 2792P DIS A00 0209.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWUhxZllTcHBMT2M/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiOWY4bXBQTktsazQ", "createdOn":"", "firstName":"dell  d505.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOWY4bXBQTktsazQ/preview"
+new Contact({"id":"0B_JDYj6vtQQiOWY4bXBQTktsazQ", "createdOn":"", "firstName":"dell d505.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOWY4bXBQTktsazQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQidzFpT09VU1N1ZlE", "createdOn":"", "firstName":"dell D500.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidzFpT09VU1N1ZlE/preview"
@@ -11341,7 +11342,7 @@ new Contact({"id":"0B_JDYj6vtQQiM3VDXzl5UG5Lcm8", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiSFgzWHh4R0JwUFE", "createdOn":"", "firstName":"hp  HP COMPAQ 6535S 6735S AMD Inventec Prince Pearl laptop Schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSFgzWHh4R0JwUFE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiaEdabnF5VVRVR1k", "createdOn":"", "firstName":"hp  HP COMPAQ 6531S  INVENTEC ZZI MV  REV A03.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaEdabnF5VVRVR1k/preview"
+new Contact({"id":"0B_JDYj6vtQQiaEdabnF5VVRVR1k", "createdOn":"", "firstName":"hp  HP COMPAQ 6531S   INVENTEC ZZI MV   REV A03.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaEdabnF5VVRVR1k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiSkoyWFZiUTVSTEk", "createdOn":"", "firstName":"hp  HP Compaq 6530B 6730B   INVENTEC DD08   REV AX1Sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSkoyWFZiUTVSTEk/preview"
@@ -11797,7 +11798,7 @@ new Contact({"id":"0B_JDYj6vtQQic0ZHck0xZ1lleDA", "createdOn":"", "firstName":"h
 new Contact({"id":"0B_JDYj6vtQQiZEZYNDRKZ0lSYWM", "createdOn":"", "firstName":"hp  510 511 610 (UMA) .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZEZYNDRKZ0lSYWM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidExEXzRLTFFrQVE", "createdOn":"", "firstName":"hp  4510s 4416s INVENTEC 6050A2252701 MB A3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidExEXzRLTFFrQVE/preview"
+new Contact({"id":"0B_JDYj6vtQQidExEXzRLTFFrQVE", "createdOn":"", "firstName":"hp  4510s 4416s  INVENTEC 6050A2252701 MB A3.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidExEXzRLTFFrQVE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQicWVfTTRacFBHd1E", "createdOn":"", "firstName":"hp  1HP DV4 CQ40 CQ45 INTEL DISCRETE COMPAL LA 4102P REV 0.1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicWVfTTRacFBHd1E/preview"
@@ -11995,7 +11996,7 @@ new Contact({"id":"0B_JDYj6vtQQiOGx4MlZRSHpPVG8", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiOG9xTi1BMWdkbGM", "createdOn":"", "firstName":"asus Emachines D725.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOG9xTi1BMWdkbGM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiaThxYkJzUnU5R0k", "createdOn":"", "firstName":"asus Emachine E627  COMPAL LA 5481P   REV 1.0Sec.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaThxYkJzUnU5R0k/preview"
+new Contact({"id":"0B_JDYj6vtQQiaThxYkJzUnU5R0k", "createdOn":"", "firstName":"asus Emachine E627 COMPAL LA 5481P   REV 1.0Sec.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaThxYkJzUnU5R0k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQibFhreWQzaDdnb1k", "createdOn":"", "firstName":"asus CARMEL.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibFhreWQzaDdnb1k/preview"
@@ -12022,7 +12023,7 @@ new Contact({"id":"0B_JDYj6vtQQiQXNGME42QVNibDQ", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiN3hiZXFQQ0Fubms", "createdOn":"", "firstName":"asus K43T(la 7551p).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN3hiZXFQQ0Fubms/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiMVp0VFc3YUY2MEk", "createdOn":"", "firstName":"asus Z96H   Schematic Diagrams.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMVp0VFc3YUY2MEk/preview"
+new Contact({"id":"0B_JDYj6vtQQiMVp0VFc3YUY2MEk", "createdOn":"", "firstName":"asus Z96H Schematic Diagrams.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMVp0VFc3YUY2MEk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiRlk4Y1pZajJkTjA", "createdOn":"", "firstName":"asus X8AS K40C.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRlk4Y1pZajJkTjA/preview"
@@ -12037,13 +12038,13 @@ new Contact({"id":"0B_JDYj6vtQQiWUhNNk1oWGx0c28", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiVFJJQm0xNk9NMVk", "createdOn":"", "firstName":"asus N20A MB R1.2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVFJJQm0xNk9NMVk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicUgzVjd5UkVaT2c", "createdOn":"", "firstName":"asus m50s x55s  rev 2.0sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicUgzVjd5UkVaT2c/preview"
+new Contact({"id":"0B_JDYj6vtQQicUgzVjd5UkVaT2c", "createdOn":"", "firstName":"asus m50s x55s rev 2.0sec.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicUgzVjd5UkVaT2c/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQieHZVcFVvc1pPUUE", "createdOn":"", "firstName":"asus M50 series.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQieHZVcFVvc1pPUUE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiRlJJZDh4cnhnMm8", "createdOn":"", "firstName":"asus K53 U LA 7322pr10 0217d  PBL60.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRlJJZDh4cnhnMm8/preview"
+new Contact({"id":"0B_JDYj6vtQQiRlJJZDh4cnhnMm8", "createdOn":"", "firstName":"asus K53 U LA 7322pr10 0217d PBL60.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiRlJJZDh4cnhnMm8/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiMDBpRDhKZk5acjg", "createdOn":"", "firstName":"asus K70IJ Rev1.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMDBpRDhKZk5acjg/preview"
@@ -12055,19 +12056,19 @@ new Contact({"id":"0B_JDYj6vtQQiTGMzeVcyQzc3TFU", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiTy1jV2cycTlCRVU", "createdOn":"", "firstName":"asus K42F R2.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTy1jV2cycTlCRVU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicElMU2FMQXZITVU", "createdOn":"", "firstName":"asus G1S  CAP.02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicElMU2FMQXZITVU/preview"
+new Contact({"id":"0B_JDYj6vtQQicElMU2FMQXZITVU", "createdOn":"", "firstName":"asus G1S CAP.02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicElMU2FMQXZITVU/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiZzBnNmxkSXM1bTA", "createdOn":"", "firstName":"asus K40 series K40AB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZzBnNmxkSXM1bTA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiMThXRUpqMEVrdUk", "createdOn":"", "firstName":"asus F7Z  REV 2.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMThXRUpqMEVrdUk/preview"
+new Contact({"id":"0B_JDYj6vtQQiMThXRUpqMEVrdUk", "createdOn":"", "firstName":"asus F7Z REV 2.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMThXRUpqMEVrdUk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQic3hRdkgyeDR5ekU", "createdOn":"", "firstName":"asus f83vf mb r11.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic3hRdkgyeDR5ekU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZDZhQm1zZ0ZrOXM", "createdOn":"", "firstName":"asus F5Z  REV 2.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZDZhQm1zZ0ZrOXM/preview"
+new Contact({"id":"0B_JDYj6vtQQiZDZhQm1zZ0ZrOXM", "createdOn":"", "firstName":"asus F5Z REV 2.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZDZhQm1zZ0ZrOXM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiMGJQSDNHNmpXVm8", "createdOn":"", "firstName":"asus F3T MB R2.0.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMGJQSDNHNmpXVm8/preview"
@@ -12076,16 +12077,16 @@ new Contact({"id":"0B_JDYj6vtQQiMGJQSDNHNmpXVm8", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiS0haaTBFVzJUOXM", "createdOn":"", "firstName":"asus A8N DC MB R11.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiS0haaTBFVzJUOXM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiUjh5akhIN0NwTFE", "createdOn":"", "firstName":"asus EeePC 1000H  REV 1.3G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUjh5akhIN0NwTFE/preview"
+new Contact({"id":"0B_JDYj6vtQQiUjh5akhIN0NwTFE", "createdOn":"", "firstName":"asus EeePC 1000H REV 1.3G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUjh5akhIN0NwTFE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiT0gtMjM3ZG9VNG8", "createdOn":"", "firstName":"asus A8M  REV 2.1  SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiT0gtMjM3ZG9VNG8/preview"
+new Contact({"id":"0B_JDYj6vtQQiT0gtMjM3ZG9VNG8", "createdOn":"", "firstName":"asus A8M REV 2.1 SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiT0gtMjM3ZG9VNG8/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiWWlyZWV3Q25ETFk", "createdOn":"", "firstName":"asus A7V8X.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWWlyZWV3Q25ETFk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiWUxKYkVIRDBMYW8", "createdOn":"", "firstName":"asus A8F  SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWUxKYkVIRDBMYW8/preview"
+new Contact({"id":"0B_JDYj6vtQQiWUxKYkVIRDBMYW8", "createdOn":"", "firstName":"asus A8F SC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWUxKYkVIRDBMYW8/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQib25QZTFUQ1hSZkE", "createdOn":"", "firstName":"asus A6J Intel 945PM schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib25QZTFUQ1hSZkE/preview"
@@ -12190,7 +12191,7 @@ new Contact({"id":"0B_JDYj6vtQQiX19VR0dQRlJSWEE", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQidGtzVGFuQmpIalk", "createdOn":"", "firstName":"apple iPhone 5 N41 schematics.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidGtzVGFuQmpIalk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiekJiWXdEZ3RfcjQ", "createdOn":"", "firstName":"hp  HP Compaq 6910P  Compal LA 3262P IBT00 REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiekJiWXdEZ3RfcjQ/preview"
+new Contact({"id":"0B_JDYj6vtQQiekJiWXdEZ3RfcjQ", "createdOn":"", "firstName":"hp  HP Compaq 6910P   Compal LA 3262P IBT00 REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiekJiWXdEZ3RfcjQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiYzFpUUNXdnA1UDQ", "createdOn":"", "firstName":"apple MacBook Pro A1278 (J30, 820 3115).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYzFpUUNXdnA1UDQ/preview"
@@ -12205,16 +12206,16 @@ new Contact({"id":"0B_JDYj6vtQQibV9JN1JkTnhsXzg", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiMzExM1RSRVplcXc", "createdOn":"", "firstName":"hp  HP G42 G62 CQ42 QUANTA AX1 INTEL DA0AX1MB6H1 REV 1A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMzExM1RSRVplcXc/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiNm9wMmNpUFhZS1E", "createdOn":"", "firstName":"toshiba Toshiba Satellite C850 C855  INVENTEC DAKAR10F DAKAR10FG  6050A2491301 MB A02 MP  20110905.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNm9wMmNpUFhZS1E/preview"
+new Contact({"id":"0B_JDYj6vtQQiNm9wMmNpUFhZS1E", "createdOn":"", "firstName":"toshiba Toshiba Satellite C850 C855 INVENTEC DAKAR10F DAKAR10FG 6050A2491301 MB A02 MP 20110905.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNm9wMmNpUFhZS1E/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiVnZJckJUZFgwU2s", "createdOn":"", "firstName":"toshiba Toshiba Satellite C850 C855  INVENTEC DAKAR10F DAKAR10FG  6050A2491301 MB A02 MP  20120323.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVnZJckJUZFgwU2s/preview"
+new Contact({"id":"0B_JDYj6vtQQiVnZJckJUZFgwU2s", "createdOn":"", "firstName":"toshiba Toshiba Satellite C850 C855 INVENTEC DAKAR10F DAKAR10FG 6050A2491301 MB A02 MP 20120323.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVnZJckJUZFgwU2s/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiTVFoRkVwcjZSeE0", "createdOn":"", "firstName":"apple  Q16C MARIAS STD EVT Q16C 051 6929 Rev03 Macbook Q16C MARIAS STD EVT Q16C 051 6929 Rev03.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTVFoRkVwcjZSeE0/preview"
+new Contact({"id":"0B_JDYj6vtQQiTVFoRkVwcjZSeE0", "createdOn":"", "firstName":"apple  Q16C  MARIAS STD EVT Q16C 051 6929 Rev03 Macbook Q16C  MARIAS STD EVT Q16C 051 6929 Rev03.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTVFoRkVwcjZSeE0/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiM3phZmZrM2IxNVE", "createdOn":"", "firstName":"apple  Q16C MARIAS STD EVT Q16C 051 6929 Rev03 Macbook Q16C MARIAS STD EVT Q16C 051 6929 Rev03.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM3phZmZrM2IxNVE/preview"
+new Contact({"id":"0B_JDYj6vtQQiM3phZmZrM2IxNVE", "createdOn":"", "firstName":"apple  Q16C  MARIAS STD EVT Q16C 051 6929 Rev03 Macbook Q16C  MARIAS STD EVT Q16C 051 6929 Rev03.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiM3phZmZrM2IxNVE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiUzBiLTluMEM5X1k", "createdOn":"", "firstName":"apple Powerbook G4 A1139 BOZEMAN EVT Q41C 051 6839 Rev02 Powerbook G4 A1139 BOZEMAN EVT Q41C 051 6839 Rev02.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUzBiLTluMEM5X1k/preview"
@@ -12223,13 +12224,13 @@ new Contact({"id":"0B_JDYj6vtQQiUzBiLTluMEM5X1k", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiVlhZNGE1UDB6VGs", "createdOn":"", "firstName":"apple Powerbook G4 A1139 MLB PB17 051 6839 RevE Powerbook G4 A1139 MLB PB17 051 6839 RevE.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVlhZNGE1UDB6VGs/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiakJlbl9kbWI5d0U", "createdOn":"", "firstName":"apple  Q41B MLB PB17 051 6694 RevG Macbook Q41B MLB PB17 051 6694 RevG.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiakJlbl9kbWI5d0U/preview"
+new Contact({"id":"0B_JDYj6vtQQiakJlbl9kbWI5d0U", "createdOn":"", "firstName":"apple  Q41B MLB PB17 051 6694 RevG Macbook Q41B  MLB PB17 051 6694 RevG.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiakJlbl9kbWI5d0U/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicm1lby11dmFIVkE", "createdOn":"", "firstName":"apple  Q41B MLB PB17 051 6694 RevC Macbook Q41B MLB PB17 051 6694 RevC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicm1lby11dmFIVkE/preview"
+new Contact({"id":"0B_JDYj6vtQQicm1lby11dmFIVkE", "createdOn":"", "firstName":"apple  Q41B MLB PB17 051 6694 RevC Macbook Q41B  MLB PB17 051 6694 RevC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicm1lby11dmFIVkE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQVRiRUFlMGdsYXc", "createdOn":"", "firstName":"apple  Q41B MLB PB17 051 6694 RevB Macbook Q41B MLB PB17 051 6694 RevB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQVRiRUFlMGdsYXc/preview"
+new Contact({"id":"0B_JDYj6vtQQiQVRiRUFlMGdsYXc", "createdOn":"", "firstName":"apple  Q41B MLB PB17 051 6694 RevB Macbook Q41B  MLB PB17 051 6694 RevB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQVRiRUFlMGdsYXc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiSHl2blRjZzNUeU0", "createdOn":"", "firstName":"apple Powerbook G4 A1085 SINCLAIR MLB Q41A 051 6598 Rev01 Powerbook G4 A1085 SINCLAIR MLB Q41A 051 6598 Rev01.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiSHl2blRjZzNUeU0/preview"
@@ -12238,7 +12239,7 @@ new Contact({"id":"0B_JDYj6vtQQiSHl2blRjZzNUeU0", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiNXhUMEE5RXFVVkU", "createdOn":"", "firstName":"apple Powerbook G4 A1138 MARIAS STD Q16C 051 6929 RevC Powerbook G4 A1138 MARIAS STD Q16C 051 6929 RevC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNXhUMEE5RXFVVkU/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQTBseHFmclFQOUE", "createdOn":"", "firstName":"apple  Q16A MLB PB15 051 6570 RevB Macbook Q16A MLB PB15 051 6570 RevB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQTBseHFmclFQOUE/preview"
+new Contact({"id":"0B_JDYj6vtQQiQTBseHFmclFQOUE", "createdOn":"", "firstName":"apple  Q16A MLB PB15 051 6570 RevB Macbook Q16A  MLB PB15 051 6570 RevB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQTBseHFmclFQOUE/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQidnhjWDc4T2hNZ00", "createdOn":"", "firstName":"apple Powerbook G4 A1095 MLB PB15 051 6809 RevB Powerbook G4 A1095 MLB PB15 051 6809 RevB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidnhjWDc4T2hNZ00/preview"
@@ -12247,7 +12248,7 @@ new Contact({"id":"0B_JDYj6vtQQidnhjWDc4T2hNZ00", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiWXJBZmFpMzVEdTA", "createdOn":"", "firstName":"apple Powerbook G4 A1046 MLB PB15 051 6338 RevC Powerbook G4 A1046 MLB PB15 051 6338 RevC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWXJBZmFpMzVEdTA/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiUDltZmVsVlgwSEk", "createdOn":"", "firstName":"apple  Q16 MLB PB15 051 6680 RevE Macbook Q16 MLB PB15 051 6680 RevE.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUDltZmVsVlgwSEk/preview"
+new Contact({"id":"0B_JDYj6vtQQiUDltZmVsVlgwSEk", "createdOn":"", "firstName":"apple  Q16 MLB PB15 051 6680 RevE Macbook Q16  MLB PB15 051 6680 RevE.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUDltZmVsVlgwSEk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiQmdfb01naFdWc0U", "createdOn":"", "firstName":"apple Powerbook G4 A1106 MLB PB15 051 6680 RevA Powerbook G4 A1106 MLB PB15 051 6680 RevA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQmdfb01naFdWc0U/preview"
@@ -12262,7 +12263,7 @@ new Contact({"id":"0B_JDYj6vtQQielVCN0tST2RsaTA", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiR1RrQk1hcDRHVVE", "createdOn":"", "firstName":"apple Macbook Pro A1150 Mullet M1 MLB DVT 051 6941 Rev12.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiR1RrQk1hcDRHVVE/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiQXM5UDQ4ZFYxdXM", "createdOn":"", "firstName":"apple Macbook Pro A1150 MLB M1 051 6941 RevA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQXM5UDQ4ZFYxdXM/preview"
+new Contact({"id":"0B_JDYj6vtQQiQXM5UDQ4ZFYxdXM", "createdOn":"", "firstName":"apple Macbook Pro A1150  MLB M1 051 6941 RevA.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQXM5UDQ4ZFYxdXM/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiVDdvWEdOVElQTDA", "createdOn":"", "firstName":"apple Macbook Pro A1212 MACBOOK PRO17 051 7164 Rev06004 Macbook Pro A1212 MACBOOK PRO17 051 7164 Rev06004.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiVDdvWEdOVElQTDA/preview"
@@ -12289,7 +12290,7 @@ new Contact({"id":"0B_JDYj6vtQQiZ2VJLXBkTGNHakE", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQick51ZkE5Z0JQMXM", "createdOn":"", "firstName":"apple iMAC G4 SANTANA M51 MLB 051 7039 RevH.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQick51ZkE5Z0JQMXM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQibGVaeV9rWllDTHc", "createdOn":"", "firstName":"apple IMAC G5 MLB PB15 051 6338 RevC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibGVaeV9rWllDTHc/preview"
+new Contact({"id":"0B_JDYj6vtQQibGVaeV9rWllDTHc", "createdOn":"", "firstName":"apple IMAC G5  MLB PB15 051 6338 RevC.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibGVaeV9rWllDTHc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQibk1Rck9ZbVdsdEE", "createdOn":"", "firstName":"apple iMAC G5 iSight IMG5 17 MLB 051 6790 RevE 2.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibk1Rck9ZbVdsdEE/preview"
@@ -12340,7 +12341,7 @@ new Contact({"id":"0B_JDYj6vtQQidUxZU2FLQmszMVk", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiWUUwS2d6NllTRms", "createdOn":"", "firstName":"apple K94 CHOPIN MLB 820 3069 A iPad2 schematic, circuit diagram.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWUUwS2d6NllTRms/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQib2tzdnpnTE5FbjQ", "createdOn":"", "firstName":"apple 0e94c K94 CHOPIN MLB 820 3069 A iPad2 820 3069 A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib2tzdnpnTE5FbjQ/preview"
+new Contact({"id":"0B_JDYj6vtQQib2tzdnpnTE5FbjQ", "createdOn":"", "firstName":"apple 0e94c K94 CHOPIN MLB 820 3069 A  iPad2 820 3069 A.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQib2tzdnpnTE5FbjQ/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiZW56cG81RzgtcG8", "createdOn":"", "firstName":"apple  VICE MLB 820 2740 05 BOTTOM.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZW56cG81RzgtcG8/preview"
@@ -12388,7 +12389,7 @@ new Contact({"id":"0B_JDYj6vtQQiZGxGYm5iQ0dJNEU", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiTkluLS1kaS16T1E", "createdOn":"", "firstName":"asus 900SD MB.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTkluLS1kaS16T1E/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiN1Z3cnRUdVNOZ0k", "createdOn":"", "firstName":"toshiba Toshiba Satellite L650 L650D BERLIN 10G  BL10G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN1Z3cnRUdVNOZ0k/preview"
+new Contact({"id":"0B_JDYj6vtQQiN1Z3cnRUdVNOZ0k", "createdOn":"", "firstName":"toshiba Toshiba Satellite L650 L650D BERLIN 10G BL10G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN1Z3cnRUdVNOZ0k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiajl4N3BxNnJUTUU", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite C650 INVENTEC Manaus 10AD .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiajl4N3BxNnJUTUU/preview"
@@ -12400,7 +12401,7 @@ new Contact({"id":"0B_JDYj6vtQQia0gxNU9GWjB2RW8", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQibHAzVWNxX1NYZTQ", "createdOn":"", "firstName":"toshiba TOSHIBA Satellite C650 Manaus 10 CS BUILD.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibHAzVWNxX1NYZTQ/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQidkJWS0F6U2dReFU", "createdOn":"", "firstName":"apple M1 DVT SIDEBURN  051 6990.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidkJWS0F6U2dReFU/preview"
+new Contact({"id":"0B_JDYj6vtQQidkJWS0F6U2dReFU", "createdOn":"", "firstName":"apple M1 DVT SIDEBURN 051 6990.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidkJWS0F6U2dReFU/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQidU1kZTc0TmxTSjQ", "createdOn":"", "firstName":"apple Powerbook G4 A1095 MLB PB15 051 6809 RevB PB15 USB BRD 051 6688.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidU1kZTc0TmxTSjQ/preview"
@@ -12436,7 +12437,7 @@ new Contact({"id":"0B_JDYj6vtQQiWlBkRFE0dkFBc2s", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQidjdkMzdTaVl6d3M", "createdOn":"", "firstName":"apple Powerbook G4 A1138 MARIAS STD Q16C 051 6929 RevC Q16C SPRINT 051 6846.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQidjdkMzdTaVl6d3M/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQicHlLS1J5YUlrR1k", "createdOn":"", "firstName":"apple  Q16C MARIAS STD EVT Q16C 051 6929 Rev03 Q16C SPRINT 051 6846.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicHlLS1J5YUlrR1k/preview"
+new Contact({"id":"0B_JDYj6vtQQicHlLS1J5YUlrR1k", "createdOn":"", "firstName":"apple  Q16C  MARIAS STD EVT Q16C 051 6929 Rev03 Q16C SPRINT 051 6846.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQicHlLS1J5YUlrR1k/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiaGVJVXJFa1VzSVU", "createdOn":"", "firstName":"apple Macbook Pro A1226 MLB MBP15 051 7225 24.04.2007 RevA.0.0 MBP15 IRB MBP15 051 7287.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiaGVJVXJFa1VzSVU/preview"
@@ -12457,7 +12458,7 @@ new Contact({"id":"0B_JDYj6vtQQiajYzUjNjdi1rbU0", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQibno1NHlRdlg5YnM", "createdOn":"", "firstName":"apple Powerbook G4 A1085 SINCLAIR MLB Q41A 051 6598 Rev01 Q41A DOB 051 6601 REV 01.PDF", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibno1NHlRdlg5YnM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQibXhqNDh5M2M2dTg", "createdOn":"", "firstName":"apple  Q16C MARIAS STD EVT Q16C 051 6929 Rev03 Q16C TATIC EVT 051 6847.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibXhqNDh5M2M2dTg/preview"
+new Contact({"id":"0B_JDYj6vtQQibXhqNDh5M2M2dTg", "createdOn":"", "firstName":"apple  Q16C  MARIAS STD EVT Q16C 051 6929 Rev03 Q16C TATIC EVT 051 6847.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQibXhqNDh5M2M2dTg/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiV2VTLWMtZ3RpaFE", "createdOn":"", "firstName":"apple Macbook Pro A1260 MBP 15 MLB TAUPO M87 051 7413 Rev16.0.0 M87 LED DRIVER BOARD 051 7482.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiV2VTLWMtZ3RpaFE/preview"
@@ -12622,7 +12623,7 @@ new Contact({"id":"0B_JDYj6vtQQiUmltZDRNaXVuNWc", "createdOn":"", "firstName":"a
 new Contact({"id":"0B_JDYj6vtQQiTFVpZFBTcTBUdUk", "createdOn":"", "firstName":"apple Macbook Unibody A1286 MBP15 MLB 051 7546 18.08.2008 RevA.0.0 MBP15 LED BOARD MBP15 051 7271.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTFVpZFBTcTBUdUk/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZTQyOVpwYmNaTE0", "createdOn":"", "firstName":"apple  Q16C MARIAS STD EVT Q16C 051 6929 Rev03 Q16C FLASH 051 6849.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZTQyOVpwYmNaTE0/preview"
+new Contact({"id":"0B_JDYj6vtQQiZTQyOVpwYmNaTE0", "createdOn":"", "firstName":"apple  Q16C  MARIAS STD EVT Q16C 051 6929 Rev03 Q16C FLASH 051 6849.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZTQyOVpwYmNaTE0/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiWXFqMklFOUhYNWc", "createdOn":"", "firstName":"apple Powerbook G4 A1138 MARIAS STD Q16C 051 6929 RevC Q16C FLASH 051 6849.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiWXFqMklFOUhYNWc/preview"
@@ -12667,10 +12668,10 @@ new Contact({"id":"0B_JDYj6vtQQia2RYSURzN2diZDA", "createdOn":"", "firstName":"t
 new Contact({"id":"0B_JDYj6vtQQiUVN4SkFzYjNGM1E", "createdOn":"", "firstName":"toshiba Toshiba Tecra 2100 FMNSY2 VP TE2100 1.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiUVN4SkFzYjNGM1E/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiMW53eWFoVkNnbXM", "createdOn":"", "firstName":"asus EEEPC 1008ha  Power Board.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMW53eWFoVkNnbXM/preview"
+new Contact({"id":"0B_JDYj6vtQQiMW53eWFoVkNnbXM", "createdOn":"", "firstName":"asus EEEPC 1008ha Power Board.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiMW53eWFoVkNnbXM/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiN01HTlpaVlF1OTA", "createdOn":"", "firstName":"asus EEEPC 1008ha  Rev 1.3G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN01HTlpaVlF1OTA/preview"
+new Contact({"id":"0B_JDYj6vtQQiN01HTlpaVlF1OTA", "createdOn":"", "firstName":"asus EEEPC 1008ha Rev 1.3G.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiN01HTlpaVlF1OTA/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiNDAwRnB6Ym1tZDg", "createdOn":"", "firstName":"dell XPS L502X QUANTA GM6C QUANTA GM6C.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiNDAwRnB6Ym1tZDg/preview"
@@ -12844,7 +12845,7 @@ new Contact({"id":"0B_JDYj6vtQQieGRzLUFrUTJFX28", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQiOWFVYlJVdTh6Y0U", "createdOn":"", "firstName":"dell Latitude E6510 Latitude E6510.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiOWFVYlJVdTh6Y0U/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiZG05NWMzSEF1Zkk", "createdOn":"", "firstName":"dell  Studio XPS 1640 RM3 .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZG05NWMzSEF1Zkk/preview"
+new Contact({"id":"0B_JDYj6vtQQiZG05NWMzSEF1Zkk", "createdOn":"", "firstName":"dell Studio XPS 1640 RM3 .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiZG05NWMzSEF1Zkk/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQic1FEMlc5akJua0k", "createdOn":"", "firstName":"dell N4010(UMA) N4010(UMA).pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic1FEMlc5akJua0k/preview"
@@ -12856,7 +12857,7 @@ new Contact({"id":"0B_JDYj6vtQQibkxwOThOMUhnS2M", "createdOn":"", "firstName":"d
 new Contact({"id":"0B_JDYj6vtQQic3JGTTYzZTY5X0k", "createdOn":"", "firstName":"dell Adamo 13.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQic3JGTTYzZTY5X0k/preview"
 }),
 			
-new Contact({"id":"0B_JDYj6vtQQiTm1qaWZPVDNkRnc", "createdOn":"", "firstName":"asus 5327 ASUS A8H TroubleshootingGuide .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTm1qaWZPVDNkRnc/preview"
+new Contact({"id":"0B_JDYj6vtQQiTm1qaWZPVDNkRnc", "createdOn":"", "firstName":"asus 5327 ASUS A8H  TroubleshootingGuide .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiTm1qaWZPVDNkRnc/preview"
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiYllCTnRIbF9PdUk", "createdOn":"", "firstName":"toshiba C660 .pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiYllCTnRIbF9PdUk/preview"
@@ -13268,7 +13269,7 @@ new Contact({"id":"0B_JDYj6vtQQiWl9yejhLaWZXcDA", "createdOn":"", "firstName":"t
 }),
 			
 new Contact({"id":"0B_JDYj6vtQQiQ2RlNExUbGtCZFE", "createdOn":"", "firstName":"toshiba portege m700 m750.pdf", "email":"https://drive.google.com/file/d/0B_JDYj6vtQQiQ2RlNExUbGtCZFE/preview"
-})		
+})			
 		];
 		localStorage.setItem("f7Contacts", JSON.stringify(contacts));
 		return JSON.parse(localStorage.getItem("f7Contacts"));
@@ -13281,7 +13282,7 @@ new Contact({"id":"0B_JDYj6vtQQiQ2RlNExUbGtCZFE", "createdOn":"", "firstName":"t
 		if (a.firstName === b.firstName) {
 			return 1;
 		}
-		return  1;
+		return -1;
 	}
 
     return {
