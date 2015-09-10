@@ -13278,7 +13278,7 @@ new Contact({"id":"0B_JDYj6vtQQiQ2RlNExUbGtCZFE", "createdOn":"", "firstName":"t
 		if (a.firstName > b.firstName) {
 			return 1;
 		}
-		if (a.firstName === b.firstName && a.lastName >= b.lastName) {
+		if (a.firstName === b.firstName) {
 			return 1;
 		}
 		return  1;
